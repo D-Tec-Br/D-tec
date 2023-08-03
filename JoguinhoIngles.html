@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo de Adjetivos em Inglês</title>
+</head>
+<body>
+    <h1>Jogo de Adjetivos em Inglês</h1>
+    <p>Arraste os adjetivos para as palavras correspondentes:</p>
+
+    <!-- Área dos adjetivos em inglês -->
+    <div id="adjectives" class="adjectives">
+        <div class="adjective" draggable="true" data-adjective="Functional">Functional</div>
+        <div class="adjective" draggable="true" data-adjective="Healthy">Healthy</div>
+        <div class="adjective" draggable="true" data-adjective="Intimate">Intimate</div>
+        <div class="adjective" draggable="true" data-adjective="Serious">Serious</div>
+        <div class="adjective" draggable="true" data-adjective="Reciprocal">Reciprocal</div>
+        <div class="adjective" draggable="true" data-adjective="Meaningful">Meaningful</div>
+        <div class="adjective" draggable="true" data-adjective="Meaningless">Meaningless</div>
+        <div class="adjective" draggable="true" data-adjective="Solid">Solid</div>
+        <div class="adjective" draggable="true" data-adjective="Stable">Stable</div>
+        <div class="adjective" draggable="true" data-adjective="Appropriate">Appropriate</div>
+        <div class="adjective" draggable="true" data-adjective="Pleasant">Pleasant</div>
+        <div class="adjective" draggable="true" data-adjective="Normal">Normal</div>
+        <div class="adjective" draggable="true" data-adjective="Relevant">Relevant</div>
+        <div class="adjective" draggable="true" data-adjective="Irrelevant">Irrelevant</div>
+        <div class="adjective" draggable="true" data-adjective="Insignificant">Insignificant</div>
+        <div class="adjective" draggable="true" data-adjective="Respectful">Respectful</div>
+    </div>
+
+    <!-- Área das palavras em português -->
+    <div id="words" class="words">
+        <div class="word" data-adjective="Functional">Funcional</div>
+        <div class="word" data-adjective="Healthy">Saudável</div>
+        <div class="word" data-adjective="Intimate">Íntimo</div>
+        <div class="word" data-adjective="Serious">Sério</div>
+        <div class="word" data-adjective="Reciprocal">Recíproco</div>
+        <div class="word" data-adjective="Meaningful">Significativo</div>
+        <div class="word" data-adjective="Meaningless">Sem sentido</div>
+        <div class="word" data-adjective="Solid">Sólido</div>
+        <div class="word" data-adjective="Stable">Estável</div>
+        <div class="word" data-adjective="Appropriate">Apropriado</div>
+        <div class="word" data-adjective="Pleasant">Agradável</div>
+        <div class="word" data-adjective="Normal">Normal</div>
+        <div class="word" data-adjective="Relevant">Relevante</div>
+        <div class="word" data-adjective="Irrelevant">Irrelevante</div>
+        <div class="word" data-adjective="Insignificant">Insignificante</div>
+        <div class="word" data-adjective="Respectful">Respeitoso</div>
+    </div>
+
+    <script>
+        // Selecionar os elementos dos adjetivos em inglês e das palavras em português
+        const adjectives = document.querySelectorAll('.adjective');
+        const words = document.querySelectorAll('.word');
+
+        // Adicionar ouvintes de eventos para os adjetivos em inglês
+        adjectives.forEach(adjective => {
+            adjective.addEventListener('dragstart', dragStart);
+            adjective.addEventListener('dragend', dragEnd);
+        });
+
+        // Adicionar ouvintes de eventos para as palavras em português
+        words.forEach(word => {
+            word.addEventListener('dragover', dragOver);
+            word.addEventListener('dragenter', dragEnter);
+            word.addEventListener('dragleave', dragLeave);
+            word.addEventListener('drop', dragDrop);
+        });
+
+        // Função para embaralhar um array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Embaralhar as palavras correspondentes
+        const matchedWords = Array.from(document.querySelectorAll('.word'));
+        shuffleArray(matchedWords);
+        document.getElementById('words').append(...matchedWords);
+
+        // Função para iniciar o arrasto de um adjetivo em inglês
+        function dragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.getAttribute('data-adjective'));
+        }
+
+        // Função para finalizar o arrasto de um adjetivo em inglês
+        function dragEnd() {
+            // Nada a fazer aqui
+        }
+
+        // Função para permitir arrastar sobre uma palavra em português
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        // Função para indicar que o mouse está sobre uma palavra em português
+        function dragEnter(e) {
+            e.preventDefault();
+            this.classList.add('hovered');
+        }
+
+        // Função para remover o indicador de mouse sobre uma palavra em português
+        function dragLeave() {
+            this.classList.remove('hovered');
+        }
+
+        // Função para soltar um adjetivo em cima de uma palavra em português
+        function dragDrop(e) {
+            const draggedAdjective = e.dataTransfer.getData('text/plain');
+            const target = e.target;
+
+            if (target.classList.contains('word') && !target.classList.contains('matched')) {
+                const dataAdjective = target.getAttribute('data-adjective');
+                if (draggedAdjective === dataAdjective) {
+                    target.textContent = dataAdjective;
+                    target.classList.add('matched');
+                    const matchingAdjective = document.querySelector(`.adjective[data-adjective="${dataAdjective}"]`);
+                    if (matchingAdjective) {
+                        matchingAdjective.classList.add('matched');
+                    }
+                    this.classList.remove('hovered');
+                    checkForWin();
+                } else {
+                    alert('Incorreto! Tente novamente.');
+                }
+            }
+        }
+
+        // Função para verificar se o jogo foi completado
+        function checkForWin() {
+            const matchedWords = document.querySelectorAll('.word.matched');
+            const matchedAdjectives = document.querySelectorAll('.adjective.matched');
+            if (matchedWords.length === words.length && matchedAdjectives.length === adjectives.length) {
+                alert('Parabéns! Você completou o jogo.');
+            }
+        }
+    </script>
+
+    <style>
+        .adjectives, .words {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .adjective, .word {
+            width: 150px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .adjective.dragging, .adjective.matched {
+            opacity: 0.5;
+        }
+
+        .word.hovered {
+            border: 2px dashed #000;
+        }
+
+        .word.matched, .adjective.matched {
+            background-color: #aaffaa;
+        }
+    </style>
+</body>
+</html>
