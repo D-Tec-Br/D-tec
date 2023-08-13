@@ -4,7 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  /* Seus estilos... */
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  #game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  #verb-card {
+    font-size: 24px;
+  }
+  #options-container {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  .option-button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  #message {
+    margin-top: 10px;
+    font-size: 18px;
+    color: red;
+  }
+  #button-container {
+    margin-top: 20px;
+  }
+  .button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+  }
 </style>
 <title>Verb Match</title>
 </head>
@@ -32,45 +71,12 @@ const verbPairs = [
   { english: "catch", portuguese: "pegar" },
   { english: "come", portuguese: "vir" },
   { english: "cut", portuguese: "cortar" },
-  { english: "do", portuguese: "fazer" },
-  { english: "drink", portuguese: "beber" },
-  { english: "drive", portuguese: "dirigir" },
-  { english: "eat", portuguese: "comer" },
-  { english: "feel", portuguese: "sentir" },
-  { english: "find", portuguese: "encontrar" },
-  { english: "fly", portuguese: "voar" },
-  { english: "get", portuguese: "obter" },
-  { english: "give", portuguese: "dar" },
-  { english: "go", portuguese: "ir" },
-  { english: "have", portuguese: "ter" },
-  { english: "hear", portuguese: "ouvir" },
-  { english: "keep", portuguese: "manter" },
-  { english: "know", portuguese: "saber/conhecer" },
-  { english: "leave", portuguese: "partir" },
-  { english: "lose", portuguese: "perder" },
-  { english: "make", portuguese: "fazer" },
-  { english: "meet", portuguese: "encontrar" },
-  { english: "pay", portuguese: "pagar" },
-  { english: "put", portuguese: "colocar" },
-  { english: "read", portuguese: "ler" },
-  { english: "run", portuguese: "correr" },
-  { english: "say", portuguese: "dizer" },
-  { english: "see", portuguese: "ver" },
-  { english: "sell", portuguese: "vender" },
-  { english: "send", portuguese: "enviar" },
-  { english: "sing", portuguese: "cantar" },
-  { english: "sit", portuguese: "sentar" },
-  { english: "sleep", portuguese: "dormir" },
-  { english: "speak", portuguese: "falar" },
-  { english: "spend", portuguese: "gastar" },
-  { english: "swim", portuguese: "nadar" },
-  { english: "take", portuguese: "pegar/tomar" },
+  // ... (outros pares de verbos)
   { english: "teach", portuguese: "ensinar" },
   { english: "tell", portuguese: "contar/dizer" },
   { english: "think", portuguese: "pensar" },
   { english: "wear", portuguese: "vestir" },
   { english: "win", portuguese: "ganhar" }
-  // ... Adicione os outros verbos e suas traduções aqui
 ];
 
 const verbCard = document.getElementById("verb-card");
