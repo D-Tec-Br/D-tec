@@ -9,10 +9,68 @@
 <title>Verb Match</title>
 </head>
 <body>
-<!-- Estrutura HTML... -->
+<div id="game-container">
+  <div id="verb-card">Clique em "Iniciar" para começar</div>
+  <div id="options-container">
+    <button class="option-button"></button>
+    <button class="option-button"></button>
+  </div>
+  <div id="message"></div>
+  <div id="button-container">
+    <button class="button" id="next-button" style="display: none;">Próximo</button>
+  </div>
+</div>
 <script>
 const verbPairs = [
-  // ... Lista de verbos aqui
+  { english: "be", portuguese: "ser/estar" },
+  { english: "become", portuguese: "tornar-se" },
+  { english: "begin", portuguese: "começar" },
+  { english: "break", portuguese: "quebrar" },
+  { english: "bring", portuguese: "trazer" },
+  { english: "build", portuguese: "construir" },
+  { english: "buy", portuguese: "comprar" },
+  { english: "catch", portuguese: "pegar" },
+  { english: "come", portuguese: "vir" },
+  { english: "cut", portuguese: "cortar" },
+  { english: "do", portuguese: "fazer" },
+  { english: "drink", portuguese: "beber" },
+  { english: "drive", portuguese: "dirigir" },
+  { english: "eat", portuguese: "comer" },
+  { english: "feel", portuguese: "sentir" },
+  { english: "find", portuguese: "encontrar" },
+  { english: "fly", portuguese: "voar" },
+  { english: "get", portuguese: "obter" },
+  { english: "give", portuguese: "dar" },
+  { english: "go", portuguese: "ir" },
+  { english: "have", portuguese: "ter" },
+  { english: "hear", portuguese: "ouvir" },
+  { english: "keep", portuguese: "manter" },
+  { english: "know", portuguese: "saber/conhecer" },
+  { english: "leave", portuguese: "partir" },
+  { english: "lose", portuguese: "perder" },
+  { english: "make", portuguese: "fazer" },
+  { english: "meet", portuguese: "encontrar" },
+  { english: "pay", portuguese: "pagar" },
+  { english: "put", portuguese: "colocar" },
+  { english: "read", portuguese: "ler" },
+  { english: "run", portuguese: "correr" },
+  { english: "say", portuguese: "dizer" },
+  { english: "see", portuguese: "ver" },
+  { english: "sell", portuguese: "vender" },
+  { english: "send", portuguese: "enviar" },
+  { english: "sing", portuguese: "cantar" },
+  { english: "sit", portuguese: "sentar" },
+  { english: "sleep", portuguese: "dormir" },
+  { english: "speak", portuguese: "falar" },
+  { english: "spend", portuguese: "gastar" },
+  { english: "swim", portuguese: "nadar" },
+  { english: "take", portuguese: "pegar/tomar" },
+  { english: "teach", portuguese: "ensinar" },
+  { english: "tell", portuguese: "contar/dizer" },
+  { english: "think", portuguese: "pensar" },
+  { english: "wear", portuguese: "vestir" },
+  { english: "win", portuguese: "ganhar" },
+  { english: "write", portuguese: "escrever" }
 ];
 
 const verbCard = document.getElementById("verb-card");
@@ -43,6 +101,7 @@ function displayNextVerb() {
     optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
     optionButtons[1 - correctOptionIndex].textContent = shuffledVerbs[1 - correctOptionIndex].portuguese;
     message.textContent = "";
+    nextButton.style.display = "none";
   } else {
     verbCard.textContent = "Fim do Jogo";
     optionsContainer.style.display = "none";
@@ -68,7 +127,6 @@ optionButtons.forEach((button, index) => {
 
 nextButton.addEventListener("click", () => {
   currentVerbIndex++;
-  nextButton.style.display = "none";
   displayNextVerb();
 });
 
