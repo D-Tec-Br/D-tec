@@ -12,46 +12,95 @@
   }
   #game-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100vh;
   }
   #verb-card {
-    border: 2px solid #333;
-    padding: 20px;
     font-size: 24px;
-    background-color: #f9f9f9;
+  }
+  #answer-input {
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 5px;
+    width: 200px;
+    text-align: center;
+  }
+  #message {
+    margin-top: 10px;
+    font-size: 18px;
+    color: red;
+  }
+  #button-container {
+    margin-top: 20px;
+  }
+  .button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
   }
 </style>
-<title>Verb Vortex</title>
+<title>Verb Match</title>
 </head>
 <body>
 <div id="game-container">
-  <div id="verb-card"></div>
+  <div id="verb-card">Click "Start" to begin</div>
+  <input type="text" id="answer-input" placeholder="Type the translation">
+  <div id="message"></div>
+  <div id="button-container">
+    <button class="button" id="check-button">Check</button>
+    <button class="button" id="next-button">Next</button>
+  </div>
 </div>
 <script>
-const verbs = [
-  "be", "become", "begin", "break", "bring", "build", "buy", "catch", "come", "cut",
-  "do", "drink", "drive", "eat", "feel", "find", "fly", "get", "give", "go",
-  "have", "hear", "keep", "know", "leave", "lose", "make", "meet", "pay", "put",
-  "read", "run", "say", "see", "sell", "send", "sing", "sit", "sleep", "speak",
-  "spend", "swim", "take", "teach", "tell", "think", "wear", "win", "write"
+const verbPairs = [
+  { english: "be", portuguese: "ser/estar" },
+  { english: "become", portuguese: "tornar-se" },
+  { english: "begin", portuguese: "começar" },
+  // ... Adicione os outros verbos e suas traduções aqui
 ];
 
 const verbCard = document.getElementById("verb-card");
+const answerInput = document.getElementById("answer-input");
+const message = document.getElementById("message");
+const checkButton = document.getElementById("check-button");
+const nextButton = document.getElementById("next-button");
+
 let currentVerbIndex = 0;
 
 function displayNextVerb() {
-  if (currentVerbIndex < verbs.length) {
-    verbCard.textContent = verbs[currentVerbIndex];
+  if (currentVerbIndex < verbPairs.length) {
+    const currentVerb = verbPairs[currentVerbIndex];
+    verbCard.textContent = currentVerb.english;
+    answerInput.value = "";
+    message.textContent = "";
     currentVerbIndex++;
   } else {
     verbCard.textContent = "Game Over";
+    answerInput.style.display = "none";
+    checkButton.style.display = "none";
+    nextButton.style.display = "none";
   }
 }
 
+function checkAnswer() {
+  const currentVerb = verbPairs[currentVerbIndex - 1];
+  const userAnswer = answerInput.value.trim().toLowerCase();
+  if (userAnswer === currentVerb.portuguese) {
+    message.textContent = "Correct!";
+    message.style.color = "green";
+  } else {
+    message.textContent = "Wrong. Try again.";
+    message.style.color = "red";
+  }
+}
+
+checkButton.addEventListener("click", checkAnswer);
+nextButton.addEventListener("click", displayNextVerb);
+
 displayNextVerb();
-verbCard.addEventListener("click", displayNextVerb);
 </script>
 </body>
 </html>
