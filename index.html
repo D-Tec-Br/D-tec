@@ -131,8 +131,14 @@ function shuffle(array) {
 function displayNextVerb() {
   if (currentVerbIndex < verbPairs.length) {
     const currentVerb = verbPairs[currentVerbIndex];
-    correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
-    const incorrectVerb = verbPairs[currentVerbIndex === 0 ? 1 : 0].portuguese;
+    correctOptionIndex = Math.floor(Math.random() * 2); // 0 ou 1
+    let incorrectVerbIndex = currentVerbIndex;
+
+    while (incorrectVerbIndex === currentVerbIndex) {
+      incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
+    }
+
+    const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
 
     verbCard.textContent = currentVerb.english;
     optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
