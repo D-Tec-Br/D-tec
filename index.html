@@ -1,3 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  #game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  #verb-card {
+    font-size: 24px;
+  }
+  #options-container {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  .option-button {
+    padding: 5px 10px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #message {
+    margin-top: 10px;
+    font-size: 18px;
+    color: red;
+  }
+  #button-container {
+    margin-top: 20px;
+  }
+  .button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+</style>
+<title>Verb Match</title>
+</head>
+<body>
+<div id="game-container">
+  <div id="verb-card">Click "Start" to begin</div>
+  <div id="options-container">
+    <button class="option-button"></button>
+    <button class="option-button"></button>
+  </div>
+  <div id="message"></div>
+  <div id="button-container">
+    <button class="button" id="next-button">Next</button>
+  </div>
+</div>
+<script>
 const verbPairs = [
   { english: "be", portuguese: "ser/estar" },
   { english: "become", portuguese: "tornar-se" },
@@ -46,8 +108,8 @@ const verbPairs = [
   { english: "tell", portuguese: "contar/dizer" },
   { english: "think", portuguese: "pensar" },
   { english: "wear", portuguese: "vestir" },
-  { english: "win", portuguese: "ganhar" },
-  { english: "write", portuguese: "escrever" }
+  { english: "win", portuguese: "ganhar" }
+  // ... Adicione os outros verbos e suas traduções aqui
 ];
 
 const verbCard = document.getElementById("verb-card");
@@ -69,14 +131,8 @@ function shuffle(array) {
 function displayNextVerb() {
   if (currentVerbIndex < verbPairs.length) {
     const currentVerb = verbPairs[currentVerbIndex];
-    correctOptionIndex = Math.floor(Math.random() * 2); // 0 ou 1
-    let incorrectVerbIndex = currentVerbIndex;
-
-    while (incorrectVerbIndex === currentVerbIndex) {
-      incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
-    }
-
-    const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
+    correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
+    const incorrectVerb = verbPairs[currentVerbIndex === 0 ? 1 : 0].portuguese;
 
     verbCard.textContent = currentVerb.english;
     optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
@@ -84,7 +140,7 @@ function displayNextVerb() {
     message.textContent = "";
     currentVerbIndex++;
   } else {
-    verbCard.textContent = "Fim do Jogo";
+    verbCard.textContent = "Game Over";
     optionsContainer.style.display = "none";
     nextButton.style.display = "none";
     message.style.display = "none";
@@ -93,10 +149,10 @@ function displayNextVerb() {
 
 function checkAnswer(selectedOptionIndex) {
   if (selectedOptionIndex === correctOptionIndex) {
-    message.textContent = "Correto!";
+    message.textContent = "Correct!";
     message.style.color = "green";
   } else {
-    message.textContent = "Errado. Tente novamente.";
+    message.textContent = "Wrong. Try again.";
     message.style.color = "red";
   }
 }
@@ -108,3 +164,6 @@ optionButtons.forEach((button, index) => {
 nextButton.addEventListener("click", displayNextVerb);
 
 displayNextVerb();
+</script>
+</body>
+</html>
