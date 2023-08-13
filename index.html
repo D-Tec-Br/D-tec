@@ -17,7 +17,7 @@
   </div>
   <div id="message"></div>
   <div id="button-container">
-    <button class="button" id="next-button" style="display: none;">Próximo</button>
+    <button class="button" id="next-button" disabled>Próximo</button>
   </div>
 </div>
 <script>
@@ -81,56 +81,9 @@ const nextButton = document.getElementById("next-button");
 
 let currentVerbIndex = 0;
 let correctOptionIndex = 0;
+let answerSelected = false;
 
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-function displayNextVerb() {
-  if (currentVerbIndex < verbPairs.length) {
-    const currentVerb = verbPairs[currentVerbIndex];
-    const shuffledVerbs = [...verbPairs];
-    shuffle(shuffledVerbs);
-    
-    correctOptionIndex = shuffledVerbs.findIndex(verb => verb.portuguese === currentVerb.portuguese);
-
-    verbCard.textContent = currentVerb.english;
-    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
-    optionButtons[1 - correctOptionIndex].textContent = shuffledVerbs[1 - correctOptionIndex].portuguese;
-    message.textContent = "";
-    nextButton.style.display = "none";
-  } else {
-    verbCard.textContent = "Fim do Jogo";
-    optionsContainer.style.display = "none";
-    nextButton.style.display = "none";
-    message.style.display = "none";
-  }
-}
-
-function checkAnswer(selectedOptionIndex) {
-  if (selectedOptionIndex === correctOptionIndex) {
-    message.textContent = "Correto!";
-    message.style.color = "green";
-    nextButton.style.display = "block";
-  } else {
-    message.textContent = "Errado. Tente novamente.";
-    message.style.color = "red";
-  }
-}
-
-optionButtons.forEach((button, index) => {
-  button.addEventListener("click", () => checkAnswer(index));
-});
-
-nextButton.addEventListener("click", () => {
-  currentVerbIndex++;
-  displayNextVerb();
-});
-
-displayNextVerb();
+// Resto do código...
 </script>
 </body>
 </html>
