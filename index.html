@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body {
-   body {
+ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
     background-color: black;
-    position: relative;
   }
   #game-container {
     display: flex;
@@ -19,26 +17,16 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    position: relative;
   }
-  #background-image-1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://portalgilbertosilva.com.br/wp-content/uploads/2019/05/fundo-grande-vermelho.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: -2;
-  }
-  #background-image-2 {
+  #background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     z-index: -1;
