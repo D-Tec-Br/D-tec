@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
- body {
-    font-family: Arial, sans-serif;
+ font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -13,14 +12,25 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: black; /* Defina a cor de fundo preta */
+    background-color: black; /* Define a cor de fundo preta */
+  }
+  #background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
   }
   #game-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.7); /* Defina a cor de fundo do container */
+    background-color: rgba(255, 255, 255, 0.7); /* Define a cor de fundo do container */
     padding: 20px; /* Adicione algum espaçamento ao redor do conteúdo */
     border-radius: 10px; /* Adicione um canto arredondado ao container */
   }
