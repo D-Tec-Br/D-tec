@@ -4,22 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body {
-   font-family: Arial, sans-serif;
+ body {
+    font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg');
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black; /* Defina a cor de fundo preta */
   }
   #game-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.7); /* Defina a cor de fundo do container */
+    padding: 20px; /* Adicione algum espaçamento ao redor do conteúdo */
+    border-radius: 10px; /* Adicione um canto arredondado ao container */
   }
   #verb-card {
     font-size: 24px;
