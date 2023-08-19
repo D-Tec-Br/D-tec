@@ -48,8 +48,8 @@ body {
 #options-container {
   margin-top: 20px;
   font-size: 18px;
-  display: flex; /* Alterado para flex para exibir as opções em uma linha */
-  justify-content: center; /* Centraliza as opções horizontalmente */
+  display: flex;
+  justify-content: center;
 }
 
 .option-button {
@@ -98,6 +98,15 @@ body {
 .button:hover {
   background-color: #218838;
 }
+
+#credit {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  color: white;
+}
+
 </style>
 <title>Verb Match</title>
 </head>
@@ -113,6 +122,7 @@ body {
     <button class="button" id="next-button" disabled>Próximo</button>
   </div>
 </div>
+<div id="credit">Feito por Gabriel</div>
 <script>
 const verbPairs = [
   { english: "be", portuguese: "ser/estar" },
@@ -230,3 +240,4 @@ displayNextVerb();
 </script>
 </body>
 </html>
+
