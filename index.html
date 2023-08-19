@@ -229,7 +229,7 @@ function displayNextVerb() {
 function checkAnswer(selectedOptionIndex) {
   if (selectedOptionIndex === correctOptionIndex) {
     message.textContent = "Correto!";
-    message.style.color = "green";
+    message.style.color = "white"; /* Alterei a cor para branco */
     nextButton.disabled = false;
   } else {
     message.textContent = "Errado. Tente novamente.";
@@ -237,6 +237,13 @@ function checkAnswer(selectedOptionIndex) {
     nextButton.disabled = true;
   }
 }
+Eu ajustei a cor do texto "Correto!" para branco, o que deve torná-lo mais visível sobre o fundo verde. Isso ajuda a melhorar o contraste e a legibilidade.
+
+
+
+
+
+
 
 optionButtons.forEach((button, index) => {
   button.addEventListener("click", () => checkAnswer(index));
