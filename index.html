@@ -98,15 +98,6 @@ body {
 .button:hover {
   background-color: #218838;
 }
-#credit {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  font-size: 12px;
-  color: white; /* Alterado para cor branca */
-}
-
-  
 </style>
 <title>Verb Match</title>
 </head>
@@ -122,20 +113,6 @@ body {
     <button class="button" id="next-button" disabled>Próximo</button>
   </div>
 </div>
-
-<div id="game-container">
-  <div id="verb-card">Clique em "Iniciar" para começar</div>
-  <div id="options-container">
-    <button class="option-button"></button>
-    <button class="option-button"></button>
-  </div>
-  <div id="message"></div>
-  <div id="button-container">
-    <button class="button" id="next-button" disabled>Próximo</button>
-  </div>
-</div>
-<div id="credit">Feito por Gabriel Godoi 3ªDS</div> <!-- Adicionado o crédito no canto -->
-  
 <script>
 const verbPairs = [
   { english: "be", portuguese: "ser/estar" },
