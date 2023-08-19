@@ -167,12 +167,11 @@ const verbPairs = [
 ];
 
 const verbCard = document.getElementById("verb-card");
-const optionsContainer = document.getElementById("options-container");
 const optionButtons = document.querySelectorAll(".option-button");
 const message = document.getElementById("message");
 const nextButton = document.getElementById("next-button");
 
-let currentVerbIndex = 0;
+let currentVerbIndex = -1; // Começar com -1 para que o próximo seja 0
 let correctOptionIndex = 0;
 
 function shuffle(array) {
@@ -183,26 +182,30 @@ function shuffle(array) {
 }
 
 function displayNextVerb() {
+  currentVerbIndex++;
+
   if (currentVerbIndex < verbPairs.length) {
     const currentVerb = verbPairs[currentVerbIndex];
     correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
-    let incorrectVerbIndex = currentVerbIndex;
-
-    while (incorrectVerbIndex === currentVerbIndex) {
-      incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
-    }
-
-    const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
 
     verbCard.textContent = currentVerb.english;
+    
+    shuffle(optionButtons); // Embaralha a ordem dos botões
     optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
-    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb;
+    optionButtons[1 - correctOptionIndex].textContent = verbPairs[currentVerbIndex].portuguese;
+
+    optionButtons.forEach(button => {
+      button.disabled = false;
+      button.style.backgroundColor = "#007bff";
+    });
+
     message.textContent = "";
     nextButton.disabled = true;
-    currentVerbIndex++;
   } else {
     verbCard.textContent = "Fim do Jogo";
-    optionsContainer.style.display = "none";
+    optionButtons.forEach(button => {
+      button.style.display = "none";
+    });
     nextButton.style.display = "none";
     message.style.display = "none";
   }
@@ -213,11 +216,16 @@ function checkAnswer(selectedOptionIndex) {
     message.textContent = "Correto!";
     message.style.color = "green";
     nextButton.disabled = false;
+    optionButtons[selectedOptionIndex].style.backgroundColor = "#28a745";
   } else {
     message.textContent = "Errado. Tente novamente.";
     message.style.color = "red";
-    nextButton.disabled = true;
+    optionButtons[selectedOptionIndex].style.backgroundColor = "#dc3545";
   }
+
+  optionButtons.forEach(button => {
+    button.disabled = true;
+  });
 }
 
 optionButtons.forEach((button, index) => {
