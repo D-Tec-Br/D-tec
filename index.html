@@ -10,10 +10,17 @@ body {
   margin: 0;
   padding: 0;
   background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg');
- background-size: cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+  @media (max-width: 600px) {
+  body {
+    background-image: none; /* Remove a imagem de fundo em dispositivos móveis */
+  }
+}
+  
   #game-container {
     display: flex;
     flex-direction: column;
