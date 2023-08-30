@@ -207,26 +207,20 @@ function shuffle(array) {
 shuffle(verbPairs); // Shuffle the verb pairs initially
 
 function displayNextVerb() {
-  if (currentVerbIndex < verbPairs.length - 2) {
+  if (currentVerbIndex < verbPairs.length) {
     const currentVerb = verbPairs[currentVerbIndex];
-    correctOptionIndex = Math.floor(Math.random() * 3); // Escolher um índice de opção correta aleatório
-    const options = [currentVerb.portuguese]; // Incluir a resposta correta
+    correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
+    let incorrectVerbIndex = currentVerbIndex;
 
-    // Adicionar mais duas opções únicas
-    for (let i = 0; i < 2; i++) {
-      let randomIndex = Math.floor(Math.random() * verbPairs.length);
-      while (options.includes(verbPairs[randomIndex].portuguese)) {
-        randomIndex = Math.floor(Math.random() * verbPairs.length);
-      }
-      options.push(verbPairs[randomIndex].portuguese);
+    while (incorrectVerbIndex === currentVerbIndex) {
+      incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
     }
 
-    shuffle(options);
+    const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
 
     verbCard.textContent = currentVerb.english;
-    optionButtons[0].textContent = options[0];
-    optionButtons[1].textContent = options[1];
-    optionButtons[2].textContent = options[2];
+    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese; // Preenche a opção correta
+    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb; // Preenche a opção incorreta
     message.textContent = "";
     nextButton.disabled = true;
     currentVerbIndex++;
@@ -237,6 +231,7 @@ function displayNextVerb() {
     message.style.display = "none";
   }
 }
+
 
 
 function checkAnswer(selectedOptionIndex) {
