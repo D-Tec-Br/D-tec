@@ -122,21 +122,12 @@ body {
     color: black;
   }
 }
-
 </style>
 <title>Verb Match</title>
 </head>
 <body>
 <div id="game-container">
-  <div id="verb-card">Clique em "Iniciar" para começar</div>
-  <div id="options-container">
-    <button class="option-button"></button>
-    <button class="option-button"></button>
-  </div>
-  <div id="message"></div>
-  <div id="button-container">
-    <button class="button" id="next-button" disabled>Próximo</button>
-  </div>
+  <!-- ... (seus elementos HTML) ... -->
 </div>
 <div id="credit">Feito por Gabriel Godoi 3DS</div>
 <script>
@@ -189,8 +180,11 @@ const verbPairs = [
   { english: "think", portuguese: "pensar" },
   { english: "wear", portuguese: "vestir" },
   { english: "win", portuguese: "ganhar" },
-  { english: "write", portuguese: "escrever" }
+  { english: "write", portuguese: "escrever" },
+  { english: "read", portuguese: "ler" }, // Novo verbo
+  { english: "sing", portuguese: "cantar" } // Novo verbo
 ];
+
 
 const verbCard = document.getElementById("verb-card");
 const optionsContainer = document.getElementById("options-container");
@@ -208,21 +202,29 @@ function shuffle(array) {
   }
 }
 
-function displayNextVerb() {
-  if (currentVerbIndex < verbPairs.length) {
-    const currentVerb = verbPairs[currentVerbIndex];
-    correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
-    let incorrectVerbIndex = currentVerbIndex;
+shuffle(verbPairs); // Shuffle the verb pairs initially
 
-    while (incorrectVerbIndex === currentVerbIndex) {
-      incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
+function displayNextVerb() {
+  if (currentVerbIndex < verbPairs.length - 2) {
+    const currentVerb = verbPairs[currentVerbIndex];
+    correctOptionIndex = Math.floor(Math.random() * 3); // Escolher um índice de opção correta aleatório
+    const options = [currentVerb.portuguese]; // Incluir a resposta correta
+
+    // Adicionar mais duas opções únicas
+    for (let i = 0; i < 2; i++) {
+      let randomIndex = Math.floor(Math.random() * verbPairs.length);
+      while (options.includes(verbPairs[randomIndex].portuguese)) {
+        randomIndex = Math.floor(Math.random() * verbPairs.length);
+      }
+      options.push(verbPairs[randomIndex].portuguese);
     }
 
-    const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
+    shuffle(options);
 
     verbCard.textContent = currentVerb.english;
-    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
-    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb;
+    optionButtons[0].textContent = options[0];
+    optionButtons[1].textContent = options[1];
+    optionButtons[2].textContent = options[2];
     message.textContent = "";
     nextButton.disabled = true;
     currentVerbIndex++;
@@ -233,6 +235,7 @@ function displayNextVerb() {
     message.style.display = "none";
   }
 }
+
 
 function checkAnswer(selectedOptionIndex) {
   if (selectedOptionIndex === correctOptionIndex) {
@@ -248,11 +251,7 @@ function checkAnswer(selectedOptionIndex) {
 
 optionButtons.forEach((button, index) => {
   button.addEventListener("click", () => checkAnswer(index));
-});
 
-nextButton.addEventListener("click", displayNextVerb);
-
-displayNextVerb();
 </script>
 </body>
 </html>
