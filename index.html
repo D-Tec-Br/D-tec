@@ -143,7 +143,7 @@
   <div id="credit">Feito por Gabriel Godoi 3DS</div>
   <script>
     const verbPairs = [
-{ english: "be", portuguese: "ser/estar" },
+     { english: "be", portuguese: "ser/estar" },
   { english: "become", portuguese: "tornar-se" },
   { english: "begin", portuguese: "começar" },
   { english: "break", portuguese: "quebrar" },
@@ -259,8 +259,7 @@
       button.addEventListener("click", () => checkAnswer(index));
     });
 
-    nextButton.addEventListener("click", displayNextVerb);
-
+    shuffle(verbPairs);
     displayNextVerb();
   </script>
 </body>
