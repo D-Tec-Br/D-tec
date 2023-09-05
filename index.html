@@ -1,63 +1,256 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <style> body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-size: contain; background-repeat: no-repeat; background-position: center center; }
-@media (min-width: 601px) { body { background-color: black; background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg'); } }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
 
-@media (max-width: 600px) { body { background-color: white; background-image: none; } }
+        @media (min-width: 601px) {
+            body {
+                background-color: black;
+                background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg');
+            }
+        }
 
-#game-container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        @media (max-width: 600px) {
+            body {
+                background-color: white;
+                background-image: none;
+            }
+        }
 
-#verb-card { font-size: 24px; padding: 10px; border: 2px solid white; display: inline-block; background-color: rgba(255, 255, 255, 0.8); border-radius: 10px; }
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
-#options-container { margin-top: 20px; font-size: 18px; display: flex; justify-content: center; }
+        #verb-card {
+            font-size: 24px;
+            padding: 10px;
+            border: 2px solid white;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
 
-.option-button { padding: 10px 20px; margin: 10px; font-size: 18px; cursor: pointer; border: none; background-color: #007bff; color: white; border-radius: 5px; transition: background-color 0.3s ease; }
+        #options-container {
+            margin-top: 20px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+        }
 
-.option-button:hover { background-color: #0056b3; }
+        .option-button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-#message { margin-top: 10px; font-size: 18px; /* Estilo para computadores (largura maior que 600px) */ color: white; }
+        .option-button:hover {
+            background-color: #0056b3;
+        }
 
-/* Estilo para celulares (largura até 600px) */ @media (max-width: 600px) { #message { color: black; } }
+        #message {
+            margin-top: 10px;
+            font-size: 18px;
+            /* Estilo para computadores (largura maior que 600px) */
+            color: white;
+        }
 
-#button-container { margin-top: 20px; }
+        /* Estilo para celulares (largura até 600px) */
+        @media (max-width: 600px) {
+            #message {
+                color: black;
+            }
+        }
 
-.button { padding: 10px 20px; margin: 10px; font-size: 18px; cursor: pointer; background-color: #28a745; color: white; border: none; border-radius: 5px; transition: background-color 0.3s ease; }
+        #button-container {
+            margin-top: 20px;
+        }
 
-.button:disabled { background-color: #6c757d; cursor: not-allowed; }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-.button:hover { background-color: #218838; }
+        .button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
 
-#credit { position: fixed; bottom: 10px; right: 10px; font-size: 12px; /* Estilo para computadores (largura maior que 600px) */ color: white; }
+        .button:hover {
+            background-color: #218838;
+        }
 
-/* Estilo para celulares (largura até 600px) */ @media (max-width: 600px) { #credit { color: black; } }
+        #credit {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            /* Estilo para computadores (largura maior que 600px) */
+            color: white;
+        }
 
-</style> <title>Verb Match</title> </head> <body> <div id="game-container"> <div id="verb-card">Clique em "Iniciar" para começar</div> <div id="options-container"> <button class="option-button"></button> <button class="option-button"></button> </div> <div id="message"></div> <div id="button-container"> <button class="button" id="next-button" disabled>Próximo</button> </div> </div> <div id="credit">Feito por Gabriel Godoi 3DS</div> <script> const verbPairs = [ { english: "be", portuguese: "ser/estar" }, { english: "become", portuguese: "tornar-se" }, { english: "begin", portuguese: "começar" }, { english: "break", portuguese: "quebrar" }, { english: "bring", portuguese: "trazer" }, { english: "build", portuguese: "construir" }, { english: "buy", portuguese: "comprar" }, { english: "catch", portuguese: "pegar" }, { english: "come", portuguese: "vir" }, { english: "cut", portuguese: "cortar" }, { english: "do", portuguese: "fazer" }, { english: "drink", portuguese: "beber" }, { english: "drive", portuguese: "dirigir" }, { english: "eat", portuguese: "comer" }, { english: "feel", portuguese: "sentir" }, { english: "find", portuguese: "encontrar" }, { english: "fly", portuguese: "voar" }, { english: "get", portuguese: "obter" }, { english: "give", portuguese: "dar" }, { english: "go", portuguese: "ir" }, { english: "have", portuguese: "ter" }, { english: "hear", portuguese: "ouvir" }, { english: "keep", portuguese: "manter" }, { english: "know", portuguese: "saber/conhecer" }, { english: "leave", portuguese: "partir" }, { english: "lose", portuguese: "perder" }, { english: "make", portuguese: "fazer" }, { english: "meet", portuguese: "encontrar" }, { english: "pay", portuguese: "pagar" }, { english: "put", portuguese: "colocar" }, { english: "read", portuguese: "ler" }, { english: "run", portuguese: "correr" }, { english: "say", portuguese: "dizer" }, { english: "see", portuguese: "ver" }, { english: "sell", portuguese: "vender" }, { english: "send", portuguese: "enviar" }, { english: "sing", portuguese: "cantar" }, { english: "sit", portuguese: "sentar" }, { english: "sleep", portuguese: "dormir" }, { english: "speak", portuguese: "falar" }, { english: "spend", portuguese: "gastar" }, { english: "swim", portuguese: "nadar" }, { english: "take", portuguese: "pegar/tomar" }, { english: "teach", portuguese: "ensinar" }, { english: "tell", portuguese: "contar/dizer" }, { english: "think", portuguese: "pensar" }, { english: "wear", portuguese: "vestir" }, { english: "win", portuguese: "ganhar" }, { english: "write", portuguese: "escrever" } ];
-const verbCard = document.getElementById("verb-card"); const optionsContainer = document.getElementById("options-container"); const optionButtons = document.querySelectorAll(".option-button"); const message = document.getElementById("message"); const nextButton = document.getElementById("next-button");
+        /* Estilo para celulares (largura até 600px) */
+        @media (max-width: 600px) {
+            #credit {
+                color: black;
+            }
+        }
+    </style>
+    <title>Verb Match</title>
+</head>
+<body>
+<div id="game-container">
+    <div id="verb-card">Clique em "Iniciar" para começar</div>
+    <div id="options-container">
+        <button class="option-button"></button>
+        <button class="option-button"></button>
+    </div>
+    <div id="message"></div>
+    <div id="button-container">
+        <button class="button" id="next-button" disabled>Próximo</button>
+    </div>
+</div>
+<div id="credit">Feito por Gabriel Godoi 3DS</div>
+<script>
+   const verbPairs = [
+        { english: "be", portuguese: "ser/estar", incorrect: "errado1", incorrect2: "erradoA" },
+  { english: "become", portuguese: "tornar-se", incorrect: "errado2", incorrect2: "erradoB" },
+  { english: "begin", portuguese: "começar", incorrect: "errado3", incorrect2: "erradoC" },
+  { english: "break", portuguese: "quebrar", incorrect: "errado4", incorrect2: "erradoD" },
+  { english: "bring", portuguese: "trazer", incorrect: "errado5", incorrect2: "erradoE" },
+  { english: "build", portuguese: "construir", incorrect: "errado6", incorrect2: "erradoF" },
+  { english: "buy", portuguese: "comprar", incorrect: "errado7", incorrect2: "erradoG" },
+  { english: "catch", portuguese: "pegar", incorrect: "errado8", incorrect2: "erradoH" },
+  { english: "come", portuguese: "vir", incorrect: "errado9", incorrect2: "erradoI" },
+  { english: "cut", portuguese: "cortar", incorrect: "errado10", incorrect2: "erradoJ" },
+  { english: "do", portuguese: "fazer", incorrect: "errado11", incorrect2: "erradoK" },
+  { english: "drink", portuguese: "beber", incorrect: "errado12", incorrect2: "erradoL" },
+  { english: "drive", portuguese: "dirigir", incorrect: "errado13", incorrect2: "erradoM" },
+  { english: "eat", portuguese: "comer", incorrect: "errado14", incorrect2: "erradoN" },
+  { english: "feel", portuguese: "sentir", incorrect: "errado15", incorrect2: "erradoO" },
+  { english: "find", portuguese: "encontrar", incorrect: "errado16", incorrect2: "erradoP" },
+  { english: "fly", portuguese: "voar", incorrect: "errado17", incorrect2: "erradoQ" },
+  { english: "get", portuguese: "obter", incorrect: "errado18", incorrect2: "erradoR" },
+  { english: "give", portuguese: "dar", incorrect: "errado19", incorrect2: "erradoS" },
+  { english: "go", portuguese: "ir", incorrect: "errado20", incorrect2: "erradoT" },
+  { english: "have", portuguese: "ter", incorrect: "errado21", incorrect2: "erradoU" },
+  { english: "hear", portuguese: "ouvir", incorrect: "errado22", incorrect2: "erradoV" },
+  { english: "keep", portuguese: "manter", incorrect: "errado23", incorrect2: "erradoW" },
+  { english: "know", portuguese: "saber/conhecer", incorrect: "errado24", incorrect2: "erradoX" },
+  { english: "leave", portuguese: "partir", incorrect: "errado25", incorrect2: "erradoY" },
+  { english: "lose", portuguese: "perder", incorrect: "errado26", incorrect2: "erradoZ" },
+  { english: "make", portuguese: "fazer", incorrect: "errado27", incorrect2: "erradoAA" },
+  { english: "meet", portuguese: "encontrar", incorrect: "errado28", incorrect2: "erradoBB" },
+  { english: "pay", portuguese: "pagar", incorrect: "errado29", incorrect2: "erradoCC" },
+  { english: "put", portuguese: "colocar", incorrect: "errado30", incorrect2: "erradoDD" },
+  { english: "read", portuguese: "ler", incorrect: "errado31", incorrect2: "erradoEE" },
+  { english: "run", portuguese: "correr", incorrect: "errado32", incorrect2: "erradoFF" },
+  { english: "say", portuguese: "dizer", incorrect: "errado33", incorrect2: "erradoGG" },
+  { english: "see", portuguese: "ver", incorrect: "errado34", incorrect2: "erradoHH" },
+  { english: "sell", portuguese: "vender", incorrect: "errado35", incorrect2: "erradoII" },
+  { english: "send", portuguese: "enviar", incorrect: "errado36", incorrect2: "erradoJJ" },
+  { english: "sing", portuguese: "cantar", incorrect: "errado37", incorrect2: "erradoKK" },
+  { english: "sit", portuguese: "sentar", incorrect: "errado38", incorrect2: "erradoLL" },
+  { english: "sleep", portuguese: "dormir", incorrect: "errado39", incorrect2: "erradoMM" },
+  { english: "speak", portuguese: "falar", incorrect: "errado40", incorrect2: "erradoNN" },
+  { english: "spend", portuguese: "gastar", incorrect: "errado41", incorrect2: "erradoOO" },
+  { english: "swim", portuguese: "nadar", incorrect: "errado42", incorrect2: "erradoPP" },
+  { english: "take", portuguese: "pegar/tomar", incorrect: "errado43", incorrect2: "erradoQQ" },
+  { english: "teach", portuguese: "ensinar", incorrect: "errado44", incorrect2: "erradoRR" },
+  { english: "tell", portuguese: "contar/dizer", incorrect: "errado45", incorrect2: "erradoSS" },
+  { english: "think", portuguese: "pensar", incorrect: "errado46", incorrect2: "erradoTT" },
+  { english: "wear", portuguese: "vestir", incorrect: "errado47", incorrect2: "erradoUU" },
+  { english: "win", portuguese: "ganhar", incorrect
+    ];
 
-let currentVerbIndex = 0; let correctOptionIndex = 0;
+    const verbCard = document.getElementById("verb-card");
+    const optionsContainer = document.getElementById("options-container");
+    const optionButtons = document.querySelectorAll(".option-button");
+    const message = document.getElementById("message");
+    const nextButton = document.getElementById("next-button");
 
-function shuffle(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; } }
+    let currentVerbIndex = 0;
+    let correctOptionIndex = 0;
 
-function displayNextVerb() { if (currentVerbIndex < verbPairs.length) { const currentVerb = verbPairs[currentVerbIndex]; correctOptionIndex = Math.random() < 0.5 ? 0 : 1; let incorrectVerbIndex = currentVerbIndex;
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
 
-while (incorrectVerbIndex === currentVerbIndex) {
-  incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
-}
+    function displayNextVerb() {
+        if (currentVerbIndex < verbPairs.length) {
+            const currentVerb = verbPairs[currentVerbIndex];
+            correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
+            let incorrectVerbIndex = currentVerbIndex;
 
-const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
+            while (incorrectVerbIndex === currentVerbIndex) {
+                incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
+            }
 
-verbCard.textContent = currentVerb.english;
-optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
-optionButtons[1 - correctOptionIndex].textContent = incorrectVerb;
-message.textContent = "";
-nextButton.disabled = true;
-currentVerbIndex++;
-} else { verbCard.textContent = "Fim do Jogo"; optionsContainer.style.display = "none"; nextButton.style.display = "none"; message.style.display = "none"; } }
+            const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
 
-function checkAnswer(selectedOptionIndex) { if (selectedOptionIndex === correctOptionIndex) { message.textContent = "Correto!"; message.style.color = "green"; nextButton.disabled = false; } else { message.textContent = "Errado. Tente novamente."; message.style.color = "red"; nextButton.disabled = true; } }
+            verbCard.textContent = currentVerb.english;
+            optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
+            optionButtons[1 - correctOptionIndex].textContent = incorrectVerb;
+            message.textContent = "";
+            nextButton.disabled = true;
+            currentVerbIndex++;
+        } else {
+            verbCard.textContent = "Fim do Jogo";
+            optionsContainer.style.display = "none";
+            nextButton.style.display = "none";
+            message.style.display = "none";
+        }
+    }
 
-optionButtons.forEach((button, index) => { button.addEventListener("click", () => checkAnswer(index)); });
+    function checkAnswer(selectedOptionIndex) {
+        if (selectedOptionIndex === correctOptionIndex) {
+            message.textContent = "Correto!";
+            message.style.color = "green";
+            nextButton.disabled = false;
+        } else {
+            message.textContent = "Errado. Tente novamente.";
+            message.style.color = "red";
+            nextButton.disabled = true;
+        }
+    }
 
-nextButton.addEventListener("click", displayNextVerb);
+    optionButtons.forEach((button, index) => {
+        button.addEventListener("click", () => checkAnswer(index));
+    });
 
-displayNextVerb(); </script>
+    nextButton.addEventListener("click", displayNextVerb);
 
-</body> </html>
+    displayNextVerb();
+</script>
+</body>
+</html>
