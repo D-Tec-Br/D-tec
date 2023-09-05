@@ -206,7 +206,7 @@
         }
     }
 
-    function displayNextVerb() {
+   function displayNextVerb() {
   if (currentVerbIndex < verbPairs.length) {
     const currentVerb = verbPairs[currentVerbIndex];
     let options = [
@@ -217,6 +217,8 @@
 
     // Embaralhar as opções
     shuffle(options);
+
+    correctOptionIndex = options.indexOf(currentVerb.portuguese); // Atualiza o índice correto
 
     verbCard.textContent = currentVerb.english;
     optionButtons[0].textContent = options[0];
