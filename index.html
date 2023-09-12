@@ -139,128 +139,96 @@
 </div>
 <div id="credit">Feito por Gabriel Godoi 3DS</div>
 <script>
-    const verbPairs = [
-        { english: "be", portuguese: "ser/estar"},
-        { english: "become", portuguese: "tornar-se"},
-        { english: "begin", portuguese: "começar"},
-        { english: "break", portuguese: "quebrar"},
-        { english: "bring", portuguese: "trazer"},
-        { english: "build", portuguese: "construir"},
-        { english: "buy", portuguese: "comprar"},
-        { english: "catch", portuguese: "pegar"},
-        { english: "come", portuguese: "vir"},
-        { english: "cut", portuguese: "cortar"},
-        { english: "do", portuguese: "fazer"},
-        { english: "drink", portuguese: "beber"},
-        { english: "drive", portuguese: "dirigir"},
-        { english: "eat", portuguese: "comer"},
-        { english: "feel", portuguese: "sentir"},
-        { english: "find", portuguese: "encontrar"},
-        { english: "fly", portuguese: "voar"},
-        { english: "get", portuguese: "obter"},
-        { english: "give", portuguese: "dar"},
-        { english: "go", portuguese: "ir"},
-        { english: "have", portuguese: "ter"},
-        { english: "hear", portuguese: "ouvir"},
-        { english: "keep", portuguese: "manter"},
-        { english: "know", portuguese: "saber/conhecer"},
-        { english: "leave", portuguese: "partir"},
-        { english: "lose", portuguese: "perder"},
-        { english: "make", portuguese: "fazer"},
-        { english: "meet", portuguese: "encontrar"},
-        { english: "pay", portuguese: "pagar"},
-        { english: "put", portuguese: "colocar"},
-        { english: "read", portuguese: "ler"},
-        { english: "run", portuguese: "correr"},
-        { english: "say", portuguese: "dizer"},
-        { english: "see", portuguese: "ver"},
-        { english: "sell", portuguese: "vender"},
-        { english: "send", portuguese: "enviar"},
-        { english: "sing", portuguese: "cantar"},
-        { english: "sit", portuguese: "sentar"},
-        { english: "sleep", portuguese: "dormir"},
-        { english: "speak", portuguese: "falar"},
-        { english: "spend", portuguese: "gastar"},
-        { english: "swim", portuguese: "nadar"},
-        { english: "take", portuguese: "pegar/tomar"},
-        { english: "teach", portuguese: "ensinar"},
-        { english: "tell", portuguese: "contar/dizer"},
-        { english: "think", portuguese: "pensar"},
-        { english: "wear", portuguese: "vestir"},
-        { english: "win", portuguese: "ganhar"}
-    ];
+   const verbPairs = [
+    { english: "be", portuguese: "ser/estar" },
+    { english: "become", portuguese: "tornar-se" },
+    { english: "begin", portuguese: "começar" },
+    { english: "break", portuguese: "quebrar" },
+    { english: "bring", portuguese: "trazer" },
+    { english: "build", portuguese: "construir" },
+    { english: "buy", portuguese: "comprar" },
+    { english: "catch", portuguese: "pegar" },
+    { english: "come", portuguese: "vir" },
+    { english: "cut", portuguese: "cortar" },
+    { english: "do", portuguese: "fazer" },
+    { english: "drink", portuguese: "beber" },
+    { english: "drive", portuguese: "dirigir" },
+    { english: "eat", portuguese: "comer" },
+    { english: "feel", portuguese: "sentir" },
+    // Continuar com as outras palavras-chave...
+];
 
-    const verbCard = document.getElementById("verb-card");
-    const optionsContainer = document.getElementById("options-container");
-    const optionButtons = document.querySelectorAll(".option-button");
-    const message = document.getElementById("message");
-    const nextButton = document.getElementById("next-button");
+const verbCard = document.getElementById("verb-card");
+const optionsContainer = document.getElementById("options-container");
+const optionButtons = document.querySelectorAll(".option-button");
+const message = document.getElementById("message");
+const nextButton = document.getElementById("next-button");
 
-    let currentVerbIndex = 0;
-    let correctOptionIndex = 0;
-    let correctAnswers = 0;
+let currentVerbIndex = 0;
+let correctOptionIndex = 0;
+let correctAnswers = 0;
 
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-
-    function displayNextVerb() {
-      if (currentVerbIndex < verbPairs.length) {
-    const currentVerb = verbPairs[currentVerbIndex];
-    let options = [
-        currentVerb.portuguese, // A opção correta
-        currentVerb.incorrect1, // A primeira opção incorreta
-        currentVerb.incorrect2  // A segunda opção incorreta
-    ];
-
-    // Embaralhar as opções
-    shuffle(options);
-
-    correctOptionIndex = options.indexOf(currentVerb.portuguese); // Atualiza o índice correto
-
-    verbCard.textContent = currentVerb.english;
-    optionButtons[0].textContent = options[0];
-    optionButtons[1].textContent = options[1];
-    optionButtons[2].textContent = options[2];
-
-    message.textContent = "";
-    nextButton.disabled = true;
-    currentVerbIndex++;
-} else {
-    if (correctAnswers === verbPairs.length) {
-        verbCard.textContent = "Você acertou todas as respostas!";
-    } else {
-        verbCard.textContent = "Fim do Jogo";
-    }
-    optionsContainer.style.display = "none";
-    nextButton.style.display = "none";
-    message.style.display = "none";
 }
-    }
 
-    function checkAnswer(selectedOptionIndex) {
-        if (selectedOptionIndex === correctOptionIndex) {
-            message.textContent = "Correto!";
-            message.style.color = "green";
-            nextButton.disabled = false;
-            correctAnswers++;
+function displayNextVerb() {
+    if (currentVerbIndex < verbPairs.length) {
+        const currentVerb = verbPairs[currentVerbIndex];
+        let options = [
+            currentVerb.portuguese, // A opção correta
+            currentVerb.incorrect1, // A primeira opção incorreta
+            currentVerb.incorrect2  // A segunda opção incorreta
+        ];
+
+        // Embaralhar as opções
+        shuffle(options);
+
+        correctOptionIndex = options.indexOf(currentVerb.portuguese); // Atualiza o índice correto
+
+        verbCard.textContent = currentVerb.english;
+        optionButtons[0].textContent = options[0];
+        optionButtons[1].textContent = options[1];
+        optionButtons[2].textContent = options[2];
+
+        message.textContent = "";
+        nextButton.disabled = true;
+        currentVerbIndex++;
+    } else {
+        if (correctAnswers === verbPairs.length) {
+            verbCard.textContent = "Você acertou todas as respostas!";
         } else {
-            message.textContent = "Errado. Tente novamente.";
-            message.style.color = "red";
-            nextButton.disabled = true;
+            verbCard.textContent = "Fim do Jogo";
         }
+        optionsContainer.style.display = "none";
+        nextButton.style.display = "none";
+        message.style.display = "none";
     }
+}
 
-    optionButtons.forEach((button, index) => {
-        button.addEventListener("click", () => checkAnswer(index));
-    });
+function checkAnswer(selectedOptionIndex) {
+    if (selectedOptionIndex === correctOptionIndex) {
+        message.textContent = "Correto!";
+        message.style.color = "green";
+        nextButton.disabled = false;
+        correctAnswers++;
+    } else {
+        message.textContent = "Errado. Tente novamente.";
+        message.style.color = "red";
+        nextButton.disabled = true;
+    }
+}
 
-    nextButton.addEventListener("click", displayNextVerb);
+optionButtons.forEach((button, index) => {
+    button.addEventListener("click", () => checkAnswer(index));
+});
 
-    displayNextVerb();
+nextButton.addEventListener("click", displayNextVerb);
+
+displayNextVerb();
 </script>
 </body>
 </html>
