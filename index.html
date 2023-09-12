@@ -136,6 +136,8 @@ body {
   <div id="button-container">
     <button class="button" id="next-button" disabled>Próximo</button>
   </div>
+  <div id="correct-counter">Corretos: 0</div>
+  <div id="incorrect-counter">Errados: 0</div>
   <div id="credit">Feito por Gabriel Godoi 3DS</div>
 </div>
 <script>
@@ -196,9 +198,13 @@ const optionsContainer = document.getElementById("options-container");
 const optionButtons = document.querySelectorAll(".option-button");
 const message = document.getElementById("message");
 const nextButton = document.getElementById("next-button");
+const correctCounterElement = document.getElementById("correct-counter");
+const incorrectCounterElement = document.getElementById("incorrect-counter");
 
 let currentVerbIndex = 0;
 let correctOptionIndex = 0;
+let correctCount = 0; // Inicializa o contador de acertos
+let incorrectCount = 0; // Inicializa o contador de erros
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -208,6 +214,11 @@ function shuffle(array) {
 }
 
 shuffle(verbPairs); // Shuffle the verb pairs initially
+
+function updateCounters() {
+  correctCounterElement.textContent = `Corretos: ${correctCount}`;
+  incorrectCounterElement.textContent = `Errados: ${incorrectCount}`;
+}
 
 function displayNextVerb() {
   if (currentVerbIndex < verbPairs.length) {
@@ -240,11 +251,16 @@ function checkAnswer(selectedOptionIndex) {
     message.textContent = "Correto!";
     message.style.color = "green";
     nextButton.disabled = false;
+    correctCount++; // Incrementa o contador de acertos
   } else {
     message.textContent = "Errado. Tente novamente.";
     message.style.color = "red";
     nextButton.disabled = true;
+    incorrectCount++; // Incrementa o contador de erros
   }
+
+  // Atualiza os contadores na interface
+  updateCounters();
 }
 
 optionButtons.forEach((button, index) => {
