@@ -1,136 +1,140 @@
 <!DOCTYPE html>
-// pa porra
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media (min-width: 601px) {
   body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background-color: black;
+    background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg');
   }
+}
 
-  @media (min-width: 601px) {
-    body {
-      background-color: black;
-      background-image: url('https://img.freepik.com/vetores-gratis/interior-vazio-da-sala-de-aula-com-quadro-negro_1308-61229.jpg');
-    }
+@media (max-width: 600px) {
+  body {
+    background-color: white;
+    background-image: none;
   }
+}
 
-  @media (max-width: 600px) {
-    body {
-      background-color: white;
-      background-image: none;
-    }
-  }
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
-  #game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+#verb-card {
+  font-size: 24px;
+  padding: 10px;
+  border: 2px solid white;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
 
-  #verb-card {
-    font-size: 24px;
-    padding: 10px;
-    border: 2px solid white;
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-  }
+#options-container {
+  margin-top: 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+}
 
-  #options-container {
-    margin-top: 20px;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-  }
+.option-button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
 
-  .option-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
+.option-button:hover {
+  background-color: #0056b3;
+}
 
-  .option-button:hover {
-    background-color: #0056b3;
-  }
+#message {
+  margin-top: 10px;
+  font-size: 18px;
+  /* Estilo para computadores (largura maior que 600px) */
+  color: white;
+}
 
+/* Estilo para celulares (largura até 600px) */
+@media (max-width: 600px) {
   #message {
-    margin-top: 10px;
-    font-size: 18px;
-    /* Estilo para computadores (largura maior que 600px) */
-    color: white;
+    color: black;
   }
+}
 
-  /* Estilo para celulares (largura até 600px) */
-  @media (max-width: 600px) {
-    #message {
-      color: black;
-    }
-  }
+#button-container {
+  margin-top: 20px;
+}
 
-  #button-container {
-    margin-top: 20px;
-  }
+.button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
 
-  .button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
+.button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
 
-  .button:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-  }
+.button:hover {
+  background-color: #218838;
+}
 
-  .button:hover {
-    background-color: #218838;
-  }
+#credit {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  /* Estilo para computadores (largura maior que 600px) */
+  color: white;
+}
 
+/* Estilo para celulares (largura até 600px) */
+@media (max-width: 600px) {
   #credit {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    font-size: 12px;
-    /* Estilo para computadores (largura maior que 600px) */
-    color: white;
+    color: black;
   }
-
-  /* Estilo para celulares (largura até 600px) */
-  @media (max-width: 600px) {
-    #credit {
-      color: black;
-    }
-  }
+}
 </style>
 <title>Verb Match</title>
 </head>
 <body>
 <div id="game-container">
+  <div id="verb-card">Clique em "Iniciar" para começar</div>
   <div id="options-container">
     <button class="option-button"></button>
     <button class="option-button"></button>
+  </div>
+  <div id="message"></div>
+  <div id="button-container">
+    <button class="button" id="next-button" disabled>Próximo</button>
   </div>
   <div id="credit">Feito por Gabriel Godoi 3DS</div>
 </div>
@@ -187,8 +191,11 @@ const verbPairs = [
   { english: "write", portuguese: "escrever" }
 ];
 
+const verbCard = document.getElementById("verb-card");
+const optionsContainer = document.getElementById("options-container");
 const optionButtons = document.querySelectorAll(".option-button");
-const verbCard = document.getElementById("verb-card"); // Added this line
+const message = document.getElementById("message");
+const nextButton = document.getElementById("next-button");
 
 let currentVerbIndex = 0;
 let correctOptionIndex = 0;
@@ -214,7 +221,7 @@ function displayNextVerb() {
 
     const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
 
-    verbCard.textContent = currentVerb.english;
+    verbCard.textContent = currentVerb.english; // Corrigido para mostrar o verbo em inglês
     optionButtons[correctOptionIndex].textContent = currentVerb.portuguese; // Preenche a opção correta
     optionButtons[1 - correctOptionIndex].textContent = incorrectVerb; // Preenche a opção incorreta
     message.textContent = "";
@@ -244,7 +251,6 @@ optionButtons.forEach((button, index) => {
   button.addEventListener("click", () => checkAnswer(index));
 });
 
-const nextButton = document.getElementById("next-button");
 nextButton.addEventListener("click", displayNextVerb);
 
 displayNextVerb();
