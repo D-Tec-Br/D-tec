@@ -208,37 +208,37 @@
     }
 
     function displayNextVerb() {
-        if (currentVerbIndex < verbPairs.length) {
-            const currentVerb = verbPairs[currentVerbIndex];
-            let options = [
-                currentVerb.portuguese, // A opção correta
-                currentVerb.incorrect1, // A primeira opção incorreta
-                currentVerb.incorrect2  // A segunda opção incorreta
-            ];
+      if (currentVerbIndex < verbPairs.length) {
+    const currentVerb = verbPairs[currentVerbIndex];
+    let options = [
+        currentVerb.portuguese, // A opção correta
+        currentVerb.incorrect1, // A primeira opção incorreta
+        currentVerb.incorrect2  // A segunda opção incorreta
+    ];
 
-            // Embaralhar as opções
-            shuffle(options);
+    // Embaralhar as opções
+    shuffle(options);
 
-            correctOptionIndex = options.indexOf(currentVerb.portuguese); // Atualiza o índice correto
+    correctOptionIndex = options.indexOf(currentVerb.portuguese); // Atualiza o índice correto
 
-            verbCard.textContent = currentVerb.english;
-            optionButtons[0].textContent = options[0];
-            optionButtons[1].textContent = options[1];
-            optionButtons[2].textContent = options[2];
+    verbCard.textContent = currentVerb.english;
+    optionButtons[0].textContent = options[0];
+    optionButtons[1].textContent = options[1];
+    optionButtons[2].textContent = options[2];
 
-            message.textContent = "";
-            nextButton.disabled = true;
-            currentVerbIndex++;
-        } else {
-            if (correctAnswers === verbPairs.length) {
-                verbCard.textContent = "Você acertou todas as respostas!";
-            } else {
-                verbCard.textContent = "Fim do Jogo";
-            }
-            optionsContainer.style.display = "none";
-            nextButton.style.display = "none";
-            message.style.display = "none";
-        }
+    message.textContent = "";
+    nextButton.disabled = true;
+    currentVerbIndex++;
+} else {
+    if (correctAnswers === verbPairs.length) {
+        verbCard.textContent = "Você acertou todas as respostas!";
+    } else {
+        verbCard.textContent = "Fim do Jogo";
+    }
+    optionsContainer.style.display = "none";
+    nextButton.style.display = "none";
+    message.style.display = "none";
+}
     }
 
     function checkAnswer(selectedOptionIndex) {
