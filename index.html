@@ -144,7 +144,7 @@
   </div>
   <div id="correct-counter">Corretos: 0</div>
   <div id="incorrect-counter">Errados: 0</div>
-  <div id="credit"> Desenvolvido pelo Grupo 1 3DS</div>
+  <div id="credit">Desenvolvido pelo Grupo 1 3DS</div>
 </div>
 <script>
 const verbPairs = [
@@ -219,7 +219,7 @@ function shuffle(array) {
   }
 }
 
-shuffle(verbPairs); // Shuffle the verb pairs initially
+shuffle(verbPairs); // Embaralhe o banco de dados de verbos
 
 function updateCounters() {
   correctCounterElement.textContent = `Corretos: ${correctCount}`;
@@ -227,20 +227,20 @@ function updateCounters() {
 }
 
 function displayNextVerb() {
-  if (currentVerbIndex < verbPairs.length) {
+  if (currentVerbIndex < 10) {
     const currentVerb = verbPairs[currentVerbIndex];
     correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
     let incorrectVerbIndex = currentVerbIndex;
 
     while (incorrectVerbIndex === currentVerbIndex) {
-      incorrectVerbIndex = Math.floor(Math.random() * verbPairs.length);
+      incorrectVerbIndex = Math.floor(Math.random() * 10); // Altere este número para o tamanho do seu banco de dados
     }
 
     const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
 
-    verbCard.textContent = currentVerb.english; // Corrigido para mostrar o verbo em inglês
-    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese; // Preenche a opção correta
-    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb; // Preenche a opção incorreta
+    verbCard.textContent = currentVerb.english; // Mostrar o verbo em inglês
+    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese; // Preencher a opção correta
+    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb; // Preencher a opção incorreta
     message.textContent = "";
     nextButton.disabled = true;
     currentVerbIndex++;
@@ -257,15 +257,15 @@ function checkAnswer(selectedOptionIndex) {
     message.textContent = "Correto!";
     message.style.color = "green";
     nextButton.disabled = false;
-    correctCount++; // Incrementa o contador de acertos
+    correctCount++; // Incrementar o contador de acertos
   } else {
     message.textContent = "Errado. Tente novamente.";
-    message.style.color = "red";
+    message.style color = "red";
     nextButton.disabled = true;
-    incorrectCount++; // Incrementa o contador de erros
+    incorrectCount++; // Incrementar o contador de erros
   }
 
-  // Atualiza os contadores na interface
+  // Atualizar os contadores na interface
   updateCounters();
 }
 
