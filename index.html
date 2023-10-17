@@ -133,7 +133,7 @@
 </head>
 <body>
 <div id="game-container">
-  <div id="verb-card">Clique em "Iniciar" para começar</div>
+  <div id="verb-card"></div>
   <div id="options-container">
     <button class="option-button"></button>
     <button class="option-button"></button>
@@ -148,7 +148,7 @@
 </div>
 <script>
 const verbPairs = [
-  { english: "be", portuguese: "ser/estar" },
+   { english: "be", portuguese: "ser/estar" },
   { english: "become", portuguese: "tornar-se" },
   { english: "begin", portuguese: "começar" },
   { english: "break", portuguese: "quebrar" },
@@ -209,8 +209,8 @@ const incorrectCounterElement = document.getElementById("incorrect-counter");
 
 let currentVerbIndex = 0;
 let correctOptionIndex = 0;
-let correctCount = 0; // Inicializa o contador de acertos
-let incorrectCount = 0; // Inicializa o contador de erros
+let correctCount = 0;
+let incorrectCount = 0;
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -219,7 +219,7 @@ function shuffle(array) {
   }
 }
 
-shuffle(verbPairs); // Embaralhe o banco de dados de verbos
+shuffle(verbPairs);
 
 function updateCounters() {
   correctCounterElement.textContent = `Corretos: ${correctCount}`;
@@ -233,14 +233,14 @@ function displayNextVerb() {
     let incorrectVerbIndex = currentVerbIndex;
 
     while (incorrectVerbIndex === currentVerbIndex) {
-      incorrectVerbIndex = Math.floor(Math.random() * 10); // Altere este número para o tamanho do seu banco de dados
+      incorrectVerbIndex = Math.floor(Math.random() * 10);
     }
 
     const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
 
-    verbCard.textContent = currentVerb.english; // Mostrar o verbo em inglês
-    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese; // Preencher a opção correta
-    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb; // Preencher a opção incorreta
+    verbCard.textContent = currentVerb.english;
+    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
+    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb;
     message.textContent = "";
     nextButton.disabled = true;
     currentVerbIndex++;
@@ -257,15 +257,14 @@ function checkAnswer(selectedOptionIndex) {
     message.textContent = "Correto!";
     message.style.color = "green";
     nextButton.disabled = false;
-    correctCount++; // Incrementar o contador de acertos
+    correctCount++;
   } else {
     message.textContent = "Errado. Tente novamente.";
-    message.style color = "red";
+    message.style.color = "red";
     nextButton.disabled = true;
-    incorrectCount++; // Incrementar o contador de erros
+    incorrectCount++;
   }
 
-  // Atualizar os contadores na interface
   updateCounters();
 }
 
