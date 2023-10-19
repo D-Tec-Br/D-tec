@@ -252,19 +252,21 @@ function displayNextVerb() {
   }
 }
 
-if (currentVerbIndex === verbPairs.length) {
-  const totalScore = correctCount - incorrectCount;
-  verbCard.textContent = "Fim do Jogo";
-  optionsContainer.style.display = "none";
-  nextButton.style.display = "none";
-  message.style.display = "none";
-  
-  const scoreMessage = document.createElement("div");
-  scoreMessage.textContent = `Total de Acertos: ${totalScore}`;
-  scoreMessage.style.fontWeight = "bold";
-  document.getElementById("game-container").appendChild(scoreMessage);
-}
+function checkAnswer(selectedOptionIndex) {
+  if (selectedOptionIndex === correctOptionIndex) {
+    message.textContent = "Correto!";
+    message.style.color = "green";
+    nextButton.disabled = false;
+    correctCount++;
+  } else {
+    message.textContent = "Errado. Tente novamente.";
+    message.style.color = "red";
+    nextButton.disabled = true;
+    incorrectCount++;
+  }
 
+  updateCounters();
+}
 
 optionButtons.forEach((button, index) => {
   button.addEventListener("click", () => checkAnswer(index));
