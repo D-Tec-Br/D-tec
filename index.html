@@ -245,22 +245,10 @@ function displayNextVerb() {
     nextButton.disabled = true;
     currentVerbIndex++;
   } else {
-    // Permitir que o botão "Próximo" funcione após responder todas as perguntas
-    nextButton.disabled = false;
     verbCard.textContent = "Fim do Jogo";
     optionsContainer.style.display = "none";
+    nextButton.style.display = "none";
     message.style.display = "none";
-  }
-}
-
-  // Exibir a diferença entre acertos e erros
-  const totalScore = correctCount - incorrectCount;
-  const scoreMessage = document.createElement("div");
-  scoreMessage.textContent = `Total de Acertos: ${totalScore}`;
-  scoreMessage.style.fontWeight = "bold";
-  document.getElementById("game-container").appendChild(scoreMessage);
-}
-
   }
 }
 
