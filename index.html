@@ -144,8 +144,8 @@
   </div>
   <div id="correct-counter">Corretos: 0</div>
   <div id="incorrect-counter">Errados: 0</div>
-  <div id="game-over-message" style="display: none;">Fim do Jogo</div>
-  <div id="total-correct" style="display: none;">Total de Corretos Confirmados: 0</div>
+  <div id="game-over-message" style="display: none;"></div>
+  <div id="total-correct" style="display: none;"></div>
   <div id="credit">Desenvolvido pelo Grupo 1 3DS</div>
 </div>
 <script>
@@ -251,7 +251,7 @@ function displayNextVerb() {
   } else {
     verbCard.textContent = "Fim do Jogo";
     optionsContainer.style.display = "none";
-    nextButton.style display = "none";
+    nextButton.style.display = "none";
     message.style.display = "none";
 
     gameOverMessage.style.display = "block";
@@ -270,7 +270,7 @@ function checkAnswer(selectedOptionIndex) {
     correctCount++;
   } else {
     message.textContent = "Errado. Tente novamente.";
-    message.style.color = "red";
+    message.style color = "red";
     nextButton.disabled = true;
     incorrectCount++;
   }
