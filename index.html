@@ -245,10 +245,19 @@ function displayNextVerb() {
     nextButton.disabled = true;
     currentVerbIndex++;
   } else {
-    verbCard.textContent = "Fim do Jogo";
-    optionsContainer.style.display = "none";
-    nextButton.style.display = "none";
-    message.style.display = "none";
+   if (currentVerbIndex === verbPairs.length) {
+  verbCard.textContent = "Fim do Jogo";
+  optionsContainer.style.display = "none";
+  nextButton.style.display = "none";
+  message.style.display = "none";
+  // Exibir a diferença entre acertos e erros
+  const totalScore = correctCount - incorrectCount;
+  const scoreMessage = document.createElement("div");
+  scoreMessage.textContent = `Total de Acertos: ${totalScore}`;
+  scoreMessage.style.fontWeight = "bold";
+  document.getElementById("game-container").appendChild(scoreMessage);
+}
+
   }
 }
 
