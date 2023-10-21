@@ -148,7 +148,7 @@
 </div>
 <script>
 const verbPairs = [
-   { english: "be", portuguese: "ser/estar" },
+  { english: "be", portuguese: "ser/estar" },
   { english: "become", portuguese: "tornar-se" },
   { english: "begin", portuguese: "começar" },
   { english: "break", portuguese: "quebrar" },
@@ -196,7 +196,44 @@ const verbPairs = [
   { english: "think", portuguese: "pensar" },
   { english: "wear", portuguese: "vestir" },
   { english: "win", portuguese: "ganhar" },
-  { english: "write", portuguese: "escrever" }
+  { english: "write", portuguese: "escrever" },
+  { english: "carry", portuguese: "carregar" },
+  { english: "drive", portuguese: "dirigir" },
+  { english: "find", portuguese: "encontrar" },
+  { english: "fly", portuguese: "voar" },
+  { english: "get", portuguese: "obter" },
+  { english: "give", portuguese: "dar" },
+  { english: "go", portuguese: "ir" },
+  { english: "have", portuguese: "ter" },
+  { english: "hear", portuguese: "ouvir" },
+  { english: "keep", portuguese: "manter" },
+  { english: "know", portuguese: "saber/conhecer" },
+  { english: "leave", portuguese: "partir" },
+  { english: "lose", portuguese: "perder" },
+  { english: "make", portuguese: "fazer" },
+  { english: "meet", portuguese: "encontrar" },
+  { english: "pay", portuguese: "pagar" },
+  { english: "put", portuguese: "colocar" },
+  { english: "read", portuguese: "ler" },
+  { english: "run", portuguese: "correr" },
+  { english: "say", portuguese: "dizer" },
+  { english: "see", portuguese: "ver" },
+  { english: "sell", portuguese: "vender" },
+  { english: "send", portuguese: "enviar" },
+  { english: "sing", portuguese: "cantar" },
+  { english: "sit", portuguese: "sentar" },
+  { english: "sleep", portuguese: "dormir" },
+  { english: "speak", portuguese: "falar" },
+  { english: "spend", portuguese: "gastar" },
+  { english: "swim", portuguese: "nadar" },
+  { english: "take", portuguese: "pegar/tomar" },
+  { english: "teach", portuguese: "ensinar" },
+  { english: "tell", portuguese: "contar/dizer" },
+  { english: "think", portuguese: "pensar" },
+  { english: "wear", portuguese: "vestir" },
+  { english: "win", portuguese: "ganhar" },
+  { english: "write", portuguese: "escrever" },
+  // Continuar a lista de verbos aqui
 ];
 
 const verbCard = document.getElementById("verb-card");
@@ -227,54 +264,5 @@ function updateCounters() {
 }
 
 function displayNextVerb() {
-  if (currentVerbIndex < 15) {
-    const currentVerb = verbPairs[currentVerbIndex];
-    correctOptionIndex = Math.random() < 0.5 ? 0 : 1;
-    let incorrectVerbIndex = currentVerbIndex;
-
-    while (incorrectVerbIndex === currentVerbIndex) {
-      incorrectVerbIndex = Math.floor(Math.random() * 10);
-    }
-
-    const incorrectVerb = verbPairs[incorrectVerbIndex].portuguese;
-
-    verbCard.textContent = currentVerb.english;
-    optionButtons[correctOptionIndex].textContent = currentVerb.portuguese;
-    optionButtons[1 - correctOptionIndex].textContent = incorrectVerb;
-    message.textContent = "";
-    nextButton.disabled = true;
-    currentVerbIndex++;
-  } else {
-    verbCard.textContent = "Fim do Jogo";
-    optionsContainer.style.display = "none";
-    nextButton.style.display = "none";
-    message.style.display = "none";
-  }
-}
-
-function checkAnswer(selectedOptionIndex) {
-  if (selectedOptionIndex === correctOptionIndex) {
-    message.textContent = "Correto!";
-    message.style.color = "green";
-    nextButton.disabled = false;
-    correctCount++;
-  } else {
-    message.textContent = "Errado. Tente novamente.";
-    message.style.color = "red";
-    nextButton.disabled = true;
-    incorrectCount++;
-  }
-
-  updateCounters();
-}
-
-optionButtons.forEach((button, index) => {
-  button.addEventListener("click", () => checkAnswer(index));
-});
-
-nextButton.addEventListener("click", displayNextVerb);
-
-displayNextVerb();
-</script>
-</body>
-</html>
+  if (currentVerbIndex
+   
