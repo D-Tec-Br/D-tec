@@ -45,6 +45,24 @@
             border: 1px solid #ccc;
             border-radius: 8px;
         }
+
+        /* Estilos para telas pequenas (como celulares) */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2em; /* Menor tamanho de fonte para h1 */
+            }
+            .content {
+                padding: 15px; /* Reduzir o padding para celular */
+                max-width: 90%; /* Diminuir a largura para celulares */
+            }
+            li {
+                font-size: 1em; /* Reduzir o tamanho da fonte nas listas */
+            }
+            iframe {
+                width: 100%; /* Tornar o iframe responsivo */
+                height: 250px; /* Ajustar altura do iframe em telas pequenas */
+            }
+        }
     </style>
 </head>
 <body>
