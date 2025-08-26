@@ -3,337 +3,149 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>D‑Tec | Proposta para GlobalTech Solutions</title>
+    <title>D-Tec Duarte Tecnologia | Contato</title>
     <style>
-        :root{
-            --bg:#0b1020;
-            --card:#111735;
-            --muted:#8ea0c9;
-            --text:#e9eefc;
-            --brand:#335dff;
-            --brand-2:#7a3ff2;
-            --line:#223060;
-            --ok:#31d0aa;
-            --warn:#ffcc4d;
-            --danger:#ff6b6b;
-            --shadow: 0 10px 30px rgba(0,0,0,.35);
+        /* Estilos visuais da página */
+        :root {
+            --bg: #0b1020;
+            --card: #111735;
+            --text: #e9eefc;
+            --muted: #8ea0c9;
+            --brand: #335dff;
+            --line: #223060;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .35);
             --radius: 18px;
         }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
-            color:var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(122,63,242,.20), transparent),
-                                radial-gradient(900px 600px at 110% 10%, rgba(51,93,255,.16), transparent),
-                                var(--bg);
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        a{color:var(--text); text-decoration:none}
-        .container{max-width:1100px; margin:0 auto; padding:0 20px}
-        header{
-            position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
-            background: rgba(11,16,32,.7); border-bottom:1px solid #1b254f;
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            background-image: radial-gradient(1200px 600px at 10% -10%, rgba(122, 63, 242, .15), transparent),
+                              radial-gradient(900px 600px at 110% 10%, rgba(51, 93, 255, .12), transparent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-        .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
-        .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.5px}
-        .brand-mark{
-            width:38px; height:38px; border-radius:12px; position:relative; overflow:hidden;
-            box-shadow:var(--shadow); background:
-            linear-gradient(145deg,var(--brand),#0c2df5 60%, #051444),
-            #0c1d46; border:2px solid #7a3ff2;
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(5, 10, 30, .45));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 30px 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
         }
-        .brand-mark::after{
-            content:""; position:absolute; inset:6px; border-radius:8px; border:2px solid rgba(255,255,255,.15);
-            background:
-            linear-gradient(90deg, transparent 0 55%, rgba(122,63,242,.9) 55% 58%, transparent 58% 100%),
-            repeating-linear-gradient( to bottom, rgba(255,255,255,.14) 0 6px, transparent 6px 12px);
-            mix-blend-mode:screen
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(145deg, var(--brand), #0c2df5);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
         }
-        .nav a{opacity:.9; padding:8px 12px; border-radius:12px}
-        .nav a:hover{background:rgba(255,255,255,.06)}
-
-        .hero{padding:72px 0 28px}
-        .hero h1{font-size: clamp(28px, 5vw, 44px); margin:0 0 10px; line-height:1.15}
-        .grad{background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
-        .hero p{max-width:780px; color:var(--muted); margin:0}
-        .cta{
-            margin-top:22px; display:flex; gap:14px; flex-wrap:wrap
+        
+        /* Se você tiver uma imagem de logo, use isso: */
+        /* .logo img { width: 100%; border-radius: 50%; } */
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, var(--brand), #7a3ff2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .btn{
-            padding:12px 16px; border-radius:14px; font-weight:600; border:1px solid #32407a;
-            background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-            box-shadow:var(--shadow)
+
+        .slogan {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
         }
-        .btn.primary{border-color:transparent; background:linear-gradient(90deg,var(--brand),var(--brand-2));}
 
-        section{padding:34px 0}
-        .grid{display:grid; gap:16px}
-        @media(min-width:880px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
-        @media(min-width:720px){ .grid.cols-2{grid-template-columns:repeat(2,1fr)} }
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
 
-        .card{background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(5,10,30,.45)); border:1px solid #24335f; border-radius: var(--radius); padding:18px; box-shadow:var(--shadow)}
-        .card h3{margin:0 0 8px}
-        .card p{margin:0}
-        .badge{display:inline-block; padding:4px 10px; border-radius:999px; font-size:.78rem; border:1px solid #36498f; color:#dbe4ff; background:rgba(122,63,242,.14)}
+        .contact-list li {
+            margin-bottom: 15px;
+        }
 
-        .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid #2b3f85; background:rgba(51,93,255,.12)}
+        .contact-list a {
+            color: var(--text);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
 
-        .list{margin:10px 0 0; padding-left:18px}
-        .list li{margin:6px 0}
+        .contact-list a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
 
-        .timeline{position:relative; padding-left:24px}
-        .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand),var(--brand-2))}
-        .step{position:relative; margin:14px 0; padding:10px 12px; border-left:3px solid transparent; background:rgba(255,255,255,.02); border-radius:12px}
-        .step::before{content:""; position:absolute; left:-20px; top:12px; width:12px; height:12px; border-radius:50%; background:var(--brand-2); box-shadow:0 0 0 4px rgba(122,63,242,.2)}
+        .icon {
+            font-size: 1.2rem;
+        }
 
-        .cols-2-balanced{columns:2; column-gap:18px}
-        @media(max-width:720px){ .cols-2-balanced{columns:1} }
-
-        .table{width:100%; border-collapse:collapse; overflow:hidden; border-radius:14px; box-shadow:var(--shadow)}
-        .table th, .table td{padding:12px 14px; border-bottom:1px solid #223060}
-        .table th{background:rgba(51,93,255,.18); text-align:left}
-        .table tfoot td{background:rgba(255,255,255,.04); font-weight:700}
-
-        .notice{border:1px dashed #4458a8; padding:14px; border-radius:14px; color:#d7e1ff}
-
-        footer{padding:34px 0 60px; color:#a6b6e6}
     </style>
 </head>
 <body>
-    <header>
-        <div class="container nav">
-            <div class="brand">
-                <span class="brand-mark" aria-hidden="true"></span>
-                <span>D‑Tec • Segurança & TI</span>
-            </div>
-            <nav style="display:flex; gap:6px; flex-wrap:wrap">
-                <a href="#empresa">Empresa</a>
-                <a href="#cenario">Cenário</a>
-                <a href="#solucoes">Soluções</a>
-                <a href="#arquitetura">Arquitetura</a>
-                <a href="#cronograma">Cronograma</a>
-                <a href="#orcamento">Orçamento</a>
-                <a href="#psI">PSI</a>
-            </nav>
-        </div>
-    </header>
 
     <main class="container">
-        <section class="hero">
-            <h1><span class="grad">Proposta D‑Tec</span> para a GlobalTech Solutions</h1>
-            <p>Apresentação da equipe de TI e Segurança da Informação. Objetivo: resolver gargalos de rede, habilitar acesso seguro (matriz, filial e home office) e padronizar processos conforme a Política de Segurança da Informação (PSI).</p>
-            <div class="cta">
-                <a class="btn primary" href="#solucoes">Ver soluções propostas</a>
-                <a class="btn" href="#orcamento">Resumo de custos</a>
-            </div>
-        </section>
-
-        <section id="empresa">
-            <div class="grid cols-3">
-                <div class="card">
-                    <span class="badge">Empresa</span>
-                    <h3>GlobalTech Solutions</h3>
-                    <ul class="list">
-                        <li>Atuação: tecnologia e serviços digitais.</li>
-                        <li>300 colaboradores.</li>
-                        <li>Matriz: São Paulo • Filial: Recife.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <span class="badge">Objetivo</span>
-                    <h3>Disponibilidade, segurança e governança</h3>
-                    <p>Priorizar tráfego crítico, conectar unidades com segurança, dar acesso remoto confiável e criar base de documentação técnica atualizada.</p>
-                </div>
-                <div class="card">
-                    <span class="badge">Resultados esperados</span>
-                    <h3>KPIs</h3>
-                    <ul class="list">
-                        <li>⬇ Latência intersites &lt; 40 ms*</li>
-                        <li>⬆ Disponibilidade de link &gt; 99,5%</li>
-                        <li>⬆ Satisfação do usuário (&gt; 85%)</li>
-                        <li>📄 100% das mudanças documentadas</li>
-                    </ul>
-                    <p style="color:var(--muted); font-size:.9rem">*estimativa para SP↔Recife com otimização e peering adequados.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="cenario">
-            <h2 class="grad" style="font-size:clamp(22px,3.4vw,30px); margin:0 0 10px">Cenário existente e dores</h2>
-            <div class="grid cols-2">
-                <div class="card">
-                    <h3>Dores identificadas</h3>
-                    <ul class="list">
-                        <li>Internet lenta sem prioridade aos serviços críticos.</li>
-                        <li>Home office sem acesso seguro ao ambiente interno.</li>
-                        <li>Filial Recife precisa acessar servidores da matriz em SP.</li>
-                        <li>Bloqueios de arquivos e acessos inadequados a sites.</li>
-                        <li>Autenticação centralizada desejada (usuários no servidor da empresa).</li>
-                        <li>Queda de link recorrente.</li>
-                        <li>Regras desorganizadas e sem identificação/documentação.</li>
-                        <li>Falta de documentação técnica conforme a PSI.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Metas de remediação</h3>
-                    <ul class="list">
-                        <li>QoS e segmentação por VLANs para priorizar tráfego.</li>
-                        <li>VPN site‑to‑site (matriz↔filial) e VPN SSL para colaboradores remotos.</li>
-                        <li>Proxy seguro, filtro DNS e DLP para arquivos/sites.</li>
-                        <li>Autenticação via AD/LDAP + RADIUS (802.1X/SSO).</li>
-                        <li>Dual‑WAN com failover e balanceamento.</li>
-                        <li>Padronização de firewall (nomenclatura e revisão semestral).</li>
-                        <li>Documentação viva com versionamento e trilha de auditoria.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="solucoes">
-            <h2 class="grad" style="font-size:clamp(22px,3.4vw,30px); margin:0 0 14px">Soluções técnicas propostas</h2>
-            <div class="grid cols-3">
-                <article class="card">
-                    <h3>1) Rede e Prioridade (QoS + VLANs)</h3>
-                    <p>Mapeamento de aplicativos críticos (ERP/VoIP/VPN) e aplicação de QoS por DSCP. Segmentação por VLANs (Usuários, VoIP, Servidores, Convidados) com ACLs claras e documentação por porta/switch.</p>
-                    <ul class="list">
-                        <li>Padrão de nomenclatura: <code>VLAN-###-TIPO</code>.</li>
-                        <li>STP/RSTP, LACP e MTU revisados.</li>
-                    </ul>
-                </article>
-                <article class="card">
-                    <h3>2) Conectividade Segura</h3>
-                    <p>VPN IPsec site‑to‑site entre SP e Recife com IKEv2 e criptografia forte. Para home office, VPN SSL (AnyConnect/GlobalProtect/WireGuard) com MFA.</p>
-                    <ul class="list">
-                        <li>Políticas por grupo (RBAC) e split‑tunneling controlado.</li>
-                        <li>Registro central de logs (Syslog/SIEM).</li>
-                    </ul>
-                </article>
-                <article class="card">
-                    <h3>3) Proxy, DNS Seguro e DLP</h3>
-                    <p>UTM/NGFW com inspeção TLS, categorias de URL, antivírus gateway e sandbox. Filtro DNS com políticas (malware, phishing e conteúdo improdutivo). DLP: regras por perfil para uploads e mídias removíveis.</p>
-                </article>
-                <article class="card">
-                    <h3>4) Identidade e Acesso</h3>
-                    <p>Integração ao Active Directory: LDAP/LDAPS para apps e RADIUS para Wi‑Fi/802.1X. SSO para sistemas internos; MFA para acessos críticos; política de senha alinhada à PSI.</p>
-                </article>
-                <article class="card">
-                    <h3>5) Alta disponibilidade de Internet</h3>
-                    <p>Dois provedores por site (tecnologias distintas) com failover automático e, quando viável, balanceamento por política (SD‑WAN opcional para priorização por aplicação).</p>
-                </article>
-                <article class="card">
-                    <h3>6) Governança, Mudanças e Documentação</h3>
-                    <p>Biblioteca viva (runbooks) versionada em Git: topologias, IPAM, padrões de regras, checklist de mudança e trilhas de auditoria. Revisão trimestral de regras e semestral da PSI.</p>
-                </article>
-            </div>
-            <div class="notice" style="margin-top:14px">
-                <strong>Ferramentas sugeridas:</strong> NGFW (FortiGate/Palo Alto/OPNsense), switch gerenciável L3, controladora Wi‑Fi, servidor AD + NPS (RADIUS), WireGuard/AnyConnect, Zabbix/PRTG, GLPI/ITIL para chamados e CMDB, Wazuh ou Graylog para SIEM.
-            </div>
-        </section>
-
-        <section id="arquitetura">
-            <h2 class="grad" style="font-size:clamp(22px,3.4vw,30px); margin:0 0 14px">Arquitetura proposta (alto nível)</h2>
-            <div class="card">
-                <div class="cols-2-balanced">
-                    <pre style="white-space:pre; overflow:auto; background:#0a1333; padding:16px; border-radius:12px; border:1px solid #24335f">
-Usuários Home Office ──VPN SSL+MFA──▶  NGFW Matriz ──────┐
-                                     │                 │
-Internet (ISP1/ISP2) ◀──Dual‑WAN/FW───▶  SD‑WAN/QoS      │
-                                     │                 │  IPsec Site‑to‑Site
-                                     ▼                 │
-                 Wi‑Fi Corp (802.1X/RADIUS)              ▼
-                     │            ┌──────────┐     NGFW Filial
-                 Switches L2/L3 ───▶  │ Servidor │        │
-               (VLANs/ACLs/QoS)      │  AD + NPS│        └─▶ LAN Recife
-                                     │  File/ERP│
-                                     └──────────┘
-                    </pre>
-                </div>
-                <p style="color:var(--muted); margin-top:6px">Segmentos: <strong>VLAN‑USU</strong>, <strong>VLAN‑VOIP</strong>, <strong>VLAN‑SRV</strong>, <strong>VLAN‑GUEST</strong>. Acesso a convidados isolado e com portal cativo. Logs centralizados.</p>
-            </div>
-        </section>
-
-        <section id="cronograma">
-            <h2 class="grad" style="font-size:clamp(22px,3.4vw,30px); margin:0 0 14px">Cronograma (4 semanas)</h2>
-            <div class="timeline">
-                <div class="step"><strong>Semana 1:</strong> descoberta, inventário, desenho LLD, criação de VLANs piloto, políticas QoS e configuração do NGFW em laboratório.</div>
-                <div class="step"><strong>Semana 2:</strong> IPsec SP↔Recife, VPN SSL com MFA, RADIUS/802.1X, proxy e filtro DNS em modo monitor.</div>
-                <div class="step"><strong>Semana 3:</strong> migração controlada por grupos, ativação de inspeção TLS e DLP, ajustes de ACLs e publicação de runbooks.</div>
-                <div class="step"><strong>Semana 4:</strong> testes de carga e DR, simulação de queda de link, treinamento de usuários chave e handover.</div>
-            </div>
-        </section>
-
-        <section id="orcamento">
-            <h2 class="grad" style="font-size:clamp(22px,3.4vw,30px); margin:0 0 14px">Orçamento estimado</h2>
-            <div class="card">
-                <table class="table">
-                    <thead>
-                        <tr><th>Item</th><th>Quantidade</th><th>Un.</th><th>Total (estim.)</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>NGFW UTM (matriz + filial)</td><td>2</td><td>R$ 18.000</td><td>R$ 36.000</td></tr>
-                        <tr><td>Switch L3 + PoE</td><td>3</td><td>R$ 7.500</td><td>R$ 22.500</td></tr>
-                        <tr><td>APs corporativos (Wi‑Fi 6)</td><td>12</td><td>R$ 1.200</td><td>R$ 14.400</td></tr>
-                        <tr><td>Serviços (implantação/treinamento)</td><td>-</td><td>R$ 22.000</td><td>R$ 22.000</td></tr>
-                        <tr><td>Licenças UTM/VPN/MFA (1º ano)</td><td>-</td><td>R$ 18.000</td><td>R$ 18.000</td></tr>
-                    </tbody>
-                    <tfoot>
-                        <tr><td colspan="3">Subtotal</td><td>R$ 112.900</td></tr>
-                    </tfoot>
-                </table>
-                <p style="color:var(--muted); margin-top:10px">Valores meramente ilustrativos para apresentação acadêmica. Ajuste conforme fornecedor/marca.</p>
-            </div>
-        </section>
-
-        <section id="psI">
-            <h2 class="grad" style="font-size:clamp(22px,3.4vw,30px); margin:0 0 14px">PSI & Documentação</h2>
-            <div class="grid cols-2">
-                <div class="card">
-                    <h3>Padrões e políticas</h3>
-                    <ul class="list">
-                        <li>Classificação da informação e política de acesso mínimo (Least Privilege).</li>
-                        <li>Gestão de vulnerabilidades mensal e correções priorizadas.</li>
-                        <li>Backup 3‑2‑1 com testes de restauração trimestrais.</li>
-                        <li>Plano de Resposta a Incidentes com papéis definidos.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Documentos a entregar</h3>
-                    <ul class="list">
-                        <li>HLR/LLD (diagramas lógico e físico).</li>
-                        <li>Inventário e IPAM.</li>
-                        <li>Livro de mudanças (RFCs) e procedimentos (runbooks).</li>
-                        <li>Matriz de riscos e plano de continuidade (BCP/DRP).</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="card">
-                <h3>Equipe D‑Tec (exemplo – substitua pelos nomes do grupo)</h3>
-                <div class="grid cols-3" style="margin-top:8px">
-                    <div class="pill">👨🏻‍💻 Líder técnico</div>
-                    <div class="pill">🔐 Segurança/PSI</div>
-                    <div class="pill">🌐 Rede/SD‑WAN</div>
-                    <div class="pill">🖥️ Sistemas/AD</div>
-                    <div class="pill">📊 Monitoramento</div>
-                    <div class="pill">📝 Documentação</div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="grid cols-2">
-                <div>
-                    <strong>D‑Tec • Duarte Tecnologia</strong><br>
-                    Página de apresentação – uso acadêmico.
-                </div>
-                <div style="text-align:right">
-                    <a class="btn" href="#top">Voltar ao topo</a>
-                </div>
-            </div>
+        <div class="logo">
+            <span>D</span> 
         </div>
-    </footer>
+
+        <h1>D-Tec Duarte Tecnologia</h1>
+        <p class="slogan">Soluções inteligentes para o seu negócio.</p>
+
+        <ul class="contact-list">
+            <li>
+                <a href="tel:+5511999998888" target="_blank">
+                    <span class="icon">📞</span>
+                    <span>(11) 99999-8888</span>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:contato@suaempresa.com.br" target="_blank">
+                    <span class="icon">✉️</span>
+                    <span>contato@suaempresa.com.br</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/seu_usuario_instagram" target="_blank">
+                    <span class="icon">📸</span>
+                    <span>@seu_usuario_instagram</span>
+                </a>
+            </li>
+        </ul>
+        
+        </main>
+
 </body>
 </html>
