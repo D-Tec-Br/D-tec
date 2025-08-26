@@ -1,125 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Site Para Carol Te amo</title>
-<style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #6a0dad, #1e90ff); /* roxo para azul */
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 15px;
-  }
-  header {
-    max-width: 600px;
-    background: rgba(255 255 255 / 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(255 255 255 / 0.3);
-  }
-  header h1 {
-    margin: 0 0 10px 0;
-    font-size: 2.2rem;
-    font-weight: 700;
-  }
-  header p {
-    margin: 0;
-    font-size: 1.2rem;
-    font-style: italic;
-    line-height: 1.4;
-  }
-  .gallery {
-    width: 100%;
-    max-width: 640px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  .iframe-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 ratio */
-    height: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(255 255 255 / 0.4);
-    background: #2a1a53; /* roxo escuro atrás do iframe */
-  }
-  .iframe-container iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 12px;
-  }
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 1.8rem;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D‑Tec | Proposta para GlobalTech Solutions</title>
+  <style>
+    :root{
+      --bg:#0b1020;           /* fundo escuro azulado */
+      --card:#111735;         /* card */
+      --muted:#8ea0c9;
+      --text:#e9eefc;
+      --brand:#335dff;        /* azul */
+      --brand-2:#7a3ff2;      /* roxo */
+      --line:#223060;
+      --ok:#31d0aa;
+      --warn:#ffcc4d;
+      --danger:#ff6b6b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
     }
-    header p {
-      font-size: 1rem;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(122,63,242,.20), transparent),
+                         radial-gradient(900px 600px at 110% 10%, rgba(51,93,255,.16), transparent),
+                         var(--bg);
     }
-  }
-</style>
-</head>
-<body>
+    a{color:var(--text); text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.7); border-bottom:1px solid #1b254f;
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.5px}
+    .brand-mark{
+      width:38px; height:38px; border-radius:12px; position:relative; overflow:hidden;
+      box-shadow:var(--shadow); background:
+        linear-gradient(145deg,var(--brand),#0c2df5 60%, #051444),
+        #0c1d46; border:2px solid #7a3ff2;
+    }
+    .brand-mark::after{/* detalhe circuito */
+      content:""; position:absolute; inset:6px; border-radius:8px; border:2px solid rgba(255,255,255,.15);
+      background:
+        linear-gradient(90deg, transparent 0 55%, rgba(122,63,242,.9) 55% 58%, transparent 58% 100%),
+        repeating-linear-gradient( to bottom, rgba(255,255,255,.14) 0 6px, transparent 6px 12px);
+      mix-blend-mode:screen
+    }
+    .nav a{opacity:.9; padding:8px 12px; border-radius:12px}
+    .nav a:hover{background:rgba(255,255,255,.06)}
 
-<header>
- <h1>Para Você, Meu Amor</h1>
-<p>Não sei como começar a escrever aqui, não faz sentido ficar tanto tempo longe e sem conversar com vc, meus dias estão cada vez mais doloridos.</p>
-<p>Carol, eu te amo, desculpas nenhuma pode retirar atos, mas isso já é um início.</p>
-<p>Estamos na nossa férias, vamos sair, rir, se abraçar, chorar, brincar, tudo que é de bom.</p>
-<p>Você é minha dupla, minha companheira de cada dia, vamos conversar, se entender melhor.</p>
-<p>Estou respeitando o tempo que vc pediu, mas quero que saiba que esse tempo e tudo isso está sendo bem difícil para mim.</p>
-<p>Vc, amor, já me ajudou tanto no meu dia a dia, já fez tanto por mim, igual eu já fiz por vc, tudo com amor e carinho.</p>
-<p>Estou deixando essa carta com vc, espero que leia com carinho igual tudo que eu escrevi aqui.</p>
-<p>Coloquei umas fotinhas para vc lembrar de alguns dos nossos momentos de tantos bons que tivemos</p>
+    .hero{padding:72px 0 28px}
+    .hero h1{font-size: clamp(28px, 5vw, 44px); margin:0 0 10px; line-height:1.15}
+    .grad{background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .hero p{max-width:780px; color:var(--muted); margin:0}
+    .cta{
+      margin-top:22px; display:flex; gap:14px; flex-wrap:wrap
+    }
+    .btn{
+      padding:12px 16px; border-radius:14px; font-weight:600; border:1px solid #32407a;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:var(--shadow)
+    }
+    .btn.primary{border-color:transparent; background:linear-gradient(90deg,var(--brand),var(--brand-2));}
 
-</header>
+    section{padding:34px 0}
+    .grid{display:grid; gap:16px}
+    @media(min-width:880px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+    @media(min-width:720px){ .grid.cols-2{grid-template-columns:repeat(2,1fr)} }
 
-<div class="gallery">
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1e87evttxqvhiTQE9q04xVEOficJvTfd3/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1eB5GcFb-7aaM5SkLz6sa95UFmnD8Riki/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1dQSBFVsWmiHSYj9WLv5XjkSOy2GSVhpQ/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1d_GOgPcnmpznQxJ3fg64ft2ysgtHuD29/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1dbEsPbYhrubdLPBLJBZ3s_z1mRJBRqgv/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1dnmVCJ-4QNerbnmBCq1w89uwjNmRYynE/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1dxBjO4R9KA9CAbmKBYGdATnDumKuJTHm/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1e3WKovVJu3kpU6LjusJgly5BtGPCh5yd/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1e4SSJ5EyiEWuD-TMFuXaxfihaiUFOS99/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1e7LyGhGOrQRoLLneZSADbgePT1xeTZTi/preview" allow="autoplay"></iframe>
-  </div>
-  <div class="iframe-container">
-    <iframe src="https://drive.google.com/file/d/1dNx9EKecBUyrz7b3Ro7lqXcmbqtyaE57/preview" allow="autoplay"></iframe>
-  </div>
-</div>
+    .card{background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(5,10,30,.45)); border:1px solid #24335f; border-radius: var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0}
+    .badge{display:inline-block; padding:4px 10px; border-radius:999px; font-size:.78rem; border:1px solid #36498f; color:#dbe4ff; background:rgba(122,63,242,.14)}
 
-</body>
-</html>
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid #2b3f85; background:rgba(51,93,255,.12)}
+
+    .list{margin:10px 0 0; padding-left:18px}
+    .list li{margin:6px 0}
+
+    .timeline{position:relative; padding-left:24px}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand),var(--brand-2))}
+    .step{position:relative; margin:14px 0; padding:10px 12px; border-left:3px solid transparent; background:rgba(255,255,255,.02); border-radius:12px}
+    .step::before{content:""; position:absolute; left:-20px; top:12px; width:12px; height:12px; border-radius:50%; background:var(--brand-2); box-shadow:0 0 0 4px rgba(122,63,242,.2)}
+
+    .cols-2-balanced{columns:2; column-gap:18px}
+    @media(max-width:720px){ .cols-2-balanced{columns:1} }
+
+    .table{width:100%
